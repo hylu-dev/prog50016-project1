@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Asteriods">
+      <UniqueIdentifier>{e92e260d-5005-4ffc-9860-d39ebaec9b64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Background">
+      <UniqueIdentifier>{58025c79-0e45-42a8-a414-6c79031779d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Enemies">
+      <UniqueIdentifier>{d872be58-2c16-49ef-ae51-f5ed8cf2c1f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Hud">
+      <UniqueIdentifier>{3b78f673-3654-46aa-b689-bde9ef748664}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Mainplayer">
+      <UniqueIdentifier>{29295f57-e21d-4c6e-a17f-8d4968ffce11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Misc">
+      <UniqueIdentifier>{387f3be3-b943-426b-8ac7-b23c2797d82a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Asteroids\meteorBig.png">
+      <Filter>Resource Files\Asteriods</Filter>
+    </Image>
+    <Image Include="Asteroids\meteorSmall.png">
+      <Filter>Resource Files\Asteriods</Filter>
+    </Image>
+    <Image Include="Background\backgroundColor.png">
+      <Filter>Resource Files\Background</Filter>
+    </Image>
+    <Image Include="Background\nebula.png">
+      <Filter>Resource Files\Background</Filter>
+    </Image>
+    <Image Include="Background\speedLine.png">
+      <Filter>Resource Files\Background</Filter>
+    </Image>
+    <Image Include="Background\starBackground.png">
+      <Filter>Resource Files\Background</Filter>
+    </Image>
+    <Image Include="Background\starBig.png">
+      <Filter>Resource Files\Background</Filter>
+    </Image>
+    <Image Include="Background\starSmall.png">
+      <Filter>Resource Files\Background</Filter>
+    </Image>
+    <Image Include="Enemies\enemyShip.png">
+      <Filter>Resource Files\Enemies</Filter>
+    </Image>
+    <Image Include="Enemies\enemyUFO.png">
+      <Filter>Resource Files\Enemies</Filter>
+    </Image>
+    <Image Include="Enemies\laserRed.png">
+      <Filter>Resource Files\Enemies</Filter>
+    </Image>
+    <Image Include="Enemies\laserRedShot.png">
+      <Filter>Resource Files\Enemies</Filter>
+    </Image>
+    <Image Include="Hud\life.png">
+      <Filter>Resource Files\Hud</Filter>
+    </Image>
+    <Image Include="Mainplayer\laserGreen.png">
+      <Filter>Resource Files\Mainplayer</Filter>
+    </Image>
+    <Image Include="Mainplayer\laserGreenShot.png">
+      <Filter>Resource Files\Mainplayer</Filter>
+    </Image>
+    <Image Include="Mainplayer\player.png">
+      <Filter>Resource Files\Mainplayer</Filter>
+    </Image>
+    <Image Include="Mainplayer\playerDamaged.png">
+      <Filter>Resource Files\Mainplayer</Filter>
+    </Image>
+    <Image Include="Mainplayer\playerDamaged_2.png">
+      <Filter>Resource Files\Mainplayer</Filter>
+    </Image>
+    <Image Include="Misc\boom3_0.png">
+      <Filter>Resource Files\Misc</Filter>
+    </Image>
+    <Image Include="Misc\exp2_0.png">
+      <Filter>Resource Files\Misc</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Hud\cour.ttf">
+      <Filter>Resource Files\Hud</Filter>
+    </Font>
+    <Font Include="Hud\courbd.ttf">
+      <Filter>Resource Files\Hud</Filter>
+    </Font>
+    <Font Include="Hud\courbi.ttf">
+      <Filter>Resource Files\Hud</Filter>
+    </Font>
+    <Font Include="Hud\couri.ttf">
+      <Filter>Resource Files\Hud</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
