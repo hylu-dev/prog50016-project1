@@ -179,7 +179,33 @@
     <Font Include="Hud\couri.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
+    <ClCompile Include="AlienShipA.cpp" />
+    <ClCompile Include="AlienShipB.cpp" />
+    <ClCompile Include="Asteroid.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyFactory.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Laser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Actor.h" />
+    <ClInclude Include="AlienShipA.h" />
+    <ClInclude Include="AlienShipB.h" />
+    <ClInclude Include="Asteroid.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyFactory.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Laser.h" />
+    <ClInclude Include="Player.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Asteroid.json" />
+    <None Include="Data\EnemyShipA.json" />
+    <None Include="Data\Player.json" />
+    <None Include="Data\System.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
