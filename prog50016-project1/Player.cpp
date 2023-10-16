@@ -1,32 +1,32 @@
 #include "Player.h"
 #include <iostream>
 #include <cmath>
+#include "Game.h"
 
-Player::Player(RenderHandler* _renderHandler, InputHandler* _inputHandler) : Actor(_renderHandler) {
+Player::Player() {
 	hit = { ALLY };
 	hurt = { ENEMY, ENVIRONMENT };
 	pos[0] = 640;
 	pos[1] = 600;
-	inputHandler = _inputHandler;
 }
 
 void Player::Update(float deltaTime) {
-	if (inputHandler->GetKeyState(LEFT)) {
+	if (Game::Get().GetInputHandler()->GetKeyState(LEFT)) {
 		direction[0] = -1;
 	}
-	if (inputHandler->GetKeyState(RIGHT)) {
+	if (Game::Get().GetInputHandler()->GetKeyState(RIGHT)) {
 		direction[0] = 1;
 	}
-	if (!inputHandler->GetKeyState(LEFT) && !inputHandler->GetKeyState(RIGHT)) {
+	if (!Game::Get().GetInputHandler()->GetKeyState(LEFT) && !Game::Get().GetInputHandler()->GetKeyState(RIGHT)) {
 		direction[0] = 0;
 	}
-	if (inputHandler->GetKeyState(UP)) {
+	if (Game::Get().GetInputHandler()->GetKeyState(UP)) {
 		direction[1] = -1;
 	}
-	if (inputHandler->GetKeyState(DOWN)) {
+	if (Game::Get().GetInputHandler()->GetKeyState(DOWN)) {
 		direction[1] = 1;
 	}
-	if (!inputHandler->GetKeyState(UP) && !inputHandler->GetKeyState(DOWN)) {
+	if (!Game::Get().GetInputHandler()->GetKeyState(UP) && !Game::Get().GetInputHandler()->GetKeyState(DOWN)) {
 		direction[1] = 0;
 	}
 

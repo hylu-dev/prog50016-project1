@@ -9,7 +9,7 @@ class Enemy : public Actor {
 
 private:
 
-	Enemy(RenderHandler* _renderHandler);
+	Enemy() = default;
 
 	void Update(float deltaTime) override;
 

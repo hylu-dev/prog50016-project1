@@ -4,9 +4,8 @@
 #define _ACTOR_H_
 
 #include <vector>
-#include "RenderHandler.h"
 #include <string>
-#include "json.h"
+#include "SDL.h"
 
 enum Layer
 {
@@ -19,7 +18,6 @@ enum Layer
 // A base class for things that move and collide
 class Actor {
 protected:
-	RenderHandler* renderHandler = nullptr;
 	float pos[2] = { 0 };
 	int lives = 1;
 	int damage = 1;
@@ -32,7 +30,7 @@ protected:
 	SDL_Point texSize;
 
 public:
-	Actor(RenderHandler* _renderHandler) : renderHandler(_renderHandler) {};
+	Actor() = default;
 
 	virtual ~Actor();
 

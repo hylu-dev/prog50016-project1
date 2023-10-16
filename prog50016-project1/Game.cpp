@@ -1,17 +1,21 @@
 #include "Game.h"
 #include <iostream>
 
-Game::Game() {
+void Game::Initialize() {
 	prevFrameTime = SDL_GetTicks();
 	inputHandler = new InputHandler();
 	renderHandler = new RenderHandler();
-	player = new Player(renderHandler, inputHandler);
+	textureManager = new TextureManager(renderHandler);
+	player = new Player();
 }
 
 Game::~Game() {
 	delete inputHandler;
 	delete renderHandler;
 	delete player;
+	inputHandler = nullptr;
+	renderHandler = nullptr;
+	player = nullptr;
 }
 
 void Game::Play() {
@@ -29,7 +33,7 @@ void Game::Play() {
 }
 
 void Game::Load() {
-	player->Load("path");
+	player->Load("Data/Player.json");
 }
 void Game::UpdateDeltaTime() {
 	float currentFrameTime = SDL_GetTicks();

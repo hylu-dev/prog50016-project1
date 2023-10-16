@@ -192,6 +192,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderHandler.cpp" />
+    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
@@ -206,6 +207,7 @@
     <ClInclude Include="Laser.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RenderHandler.h" />
+    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Asteroid.json" />

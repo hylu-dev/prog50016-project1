@@ -1,11 +1,12 @@
 #include "Actor.h"
-#include "SDL_image.h"
+#include "Game.h"
 #include <iostream>
+#include "json.h"
+#include <fstream>
 
 Actor::~Actor() {
 	SDL_DestroyTexture(texture);
 	texture = nullptr;
-	renderHandler = nullptr;
 }
 
 void Actor::Collide(Actor* actor) {
@@ -38,14 +39,27 @@ void Actor::TakeDamage(int damage) {
 
 void Actor::Draw() {
 	renderRect = { (int)pos[0], (int)pos[1], texSize.x, texSize.y };
-	renderHandler->DrawTex(texture, &renderRect);
+	Game::Get().GetRenderHandler()->DrawTex(texture, &renderRect);
 }
 
 void Actor::Load(std::string path) {
-	SDL_Surface* surface = IMG_Load("Mainplayer/player.png");
-	texture = SDL_CreateTextureFromSurface(renderHandler->GetRenderer(), surface);
-	SDL_FreeSurface(surface);
-	surface = nullptr;
+	std::ifstream inputStream(path);
+	std::string str((std::istreambuf_iterator<char>(inputStream)), std::istreambuf_iterator<char>());
+	json::JSON document = json::JSON::Load(str);
+
+	if (document.hasKey("lives")) {
+		lives = document["lives"].ToInt();
+	}
+	if (document.hasKey("damage")) {
+		lives = document["damage"].ToInt();
+	}
+	if (document.hasKey("speed")) {
+		lives = document["speed"].ToInt();
+	}
+	if (document.hasKey("sprite")) {
+		texture = Game::Get().GetTextureManager()->RetrieveTexture(document["sprite"].ToString());
+	}
+
 	SDL_QueryTexture(texture, NULL, NULL, &texSize.x, &texSize.y);
 	pos[0] -= texSize.x * .5f;
 	if (texSize.x < texSize.y) {

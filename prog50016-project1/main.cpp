@@ -1,11 +1,12 @@
 #include "Game.h"
 #include <iostream>
 
-int main(int argv, char* argc[]) {
-	Game* game = new Game();
-	game->Load();
-	game->Play();
+Game* Game::instance = nullptr;
 
-	delete game;
+int main(int argv, char* argc[]) {
+	Game::Get().Initialize();
+	Game::Get().Load();
+	Game::Get().Play();
+	Game::Get().Destroy();
 	return 0;
 }
