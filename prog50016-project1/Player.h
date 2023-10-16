@@ -18,10 +18,6 @@ public:
 	Player(SDL_Renderer* _renderer, InputHandler* _inputHandler);
 
 	void Update(float deltaTime) override;
-
-	void ChangeXDirection(int num);
-
-	void ChangeYDirection(int num);
 };
 
 #endif 

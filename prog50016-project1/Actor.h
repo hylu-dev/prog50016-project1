@@ -6,6 +6,7 @@
 #include <vector>
 #include "SDL.h"
 #include <string>
+#include "json.h"
 
 enum Layer
 {
@@ -19,11 +20,11 @@ enum Layer
 class Actor {
 protected:
 	SDL_Renderer* renderer = nullptr;
-	int pos[2] = { 0 };
-	int lives = 0;
-	int damage = 0;
-	int radius = 0;
-	int speed = 0;
+	float pos[2] = { 0 };
+	int lives = 1;
+	int damage = 1;
+	float radius = 1;
+	float speed = .5;
 	std::vector<Layer> hit;
 	std::vector<Layer> hurt;
 	SDL_Texture* texture;
@@ -33,7 +34,7 @@ protected:
 public:
 	Actor();
 
-	Actor(SDL_Renderer* _renderer) :renderer(_renderer) {};
+	Actor(SDL_Renderer* _renderer) : renderer(_renderer) {};
 
 	virtual void Update(float deltaTime) = 0;
 

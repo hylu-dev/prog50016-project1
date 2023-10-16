@@ -1,0 +1,12 @@
+{
+    "lives": 3,
+    "damage": 1,
+    "speed": 0.5,
+    "sprite": "Mainplayer/player.png",
+    "hitLayers": [
+        1
+    ],
+    "hurtLayers": [
+        2, 3
+    ]
+}

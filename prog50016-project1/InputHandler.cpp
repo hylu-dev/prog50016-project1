@@ -28,6 +28,10 @@ void InputHandler::Update(bool* quit) {
 				}
 				break;
 			case SDL_KEYDOWN:
+				if (event.key.keysym.sym == SDLK_ESCAPE) {
+					*quit = true;
+					break;
+				}
 				if (event.key.keysym.sym == SDLK_w) {
 					inputMap[UP] = true;
 				}
@@ -40,6 +44,9 @@ void InputHandler::Update(bool* quit) {
 
 				if (event.key.keysym.sym == SDLK_d) {
 					inputMap[RIGHT] = true;
+				}
+				if (event.key.keysym.sym == SDLK_SPACE) {
+					inputMap[FIRE] = true;
 				}
 				break;
 			case SDL_KEYUP:
@@ -54,6 +61,9 @@ void InputHandler::Update(bool* quit) {
 				}
 				if (event.key.keysym.sym == SDLK_d) {
 					inputMap[RIGHT] = false;
+				}
+				if (event.key.keysym.sym == SDLK_SPACE) {
+					inputMap[FIRE] = false;
 				}
 				break;
 			default:

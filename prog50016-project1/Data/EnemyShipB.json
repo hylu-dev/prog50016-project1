@@ -1,12 +1,12 @@
 {
-    "lives": 1,
+    "lives": 2,
     "damage": 1,
     "speed": 0.5,
-    "sprite": "Enemies/enemyShip.png",
+    "sprite": "Enemies/enemyUFO",
     "hitLayers": [
-        2
+        1
     ],
     "hurtLayers": [
-        1
+        2, 3
     ]
 }

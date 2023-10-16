@@ -43,7 +43,7 @@ void Actor::TakeDamage(int damage) {
 }
 
 void Actor::Render() {
-	renderRect = { pos[0], pos[1], texSize.x, texSize.y };
+	renderRect = { (int)pos[0], (int)pos[1], texSize.x, texSize.y };
 	SDL_RenderCopy(renderer, texture, NULL, &renderRect);
 }
 
@@ -53,5 +53,11 @@ void Actor::Load(std::string path) {
 	SDL_FreeSurface(surface);
 	surface = nullptr;
 	SDL_QueryTexture(texture, NULL, NULL, &texSize.x, &texSize.y);
-	pos[0] -= texSize.x * .5;
+	pos[0] -= texSize.x * .5f;
+	if (texSize.x < texSize.y) {
+		radius = texSize.x * .5f;
+	}
+	else {
+		radius = texSize.y * .5f;
+	}
 }

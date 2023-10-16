@@ -1,0 +1,12 @@
+{
+    "lives": 1,
+    "damage": 1,
+    "speed": 0.5,
+    "sprite": "Asteroids/meteorSmall.png",
+    "hitLayers": [
+        3
+    ],
+    "hurtLayers": [
+        0
+    ]
+}
