@@ -1,6 +1,6 @@
 #include "Enemy.h"
 
-Enemy::Enemy(SDL_Renderer* _renderer) : Actor(_renderer) {
+Enemy::Enemy(RenderHandler* _renderHandler) : Actor(_renderHandler) {
 
 }
 

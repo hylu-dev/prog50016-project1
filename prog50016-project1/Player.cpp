@@ -1,7 +1,7 @@
 #include "Player.h"
 #include <iostream>
 
-Player::Player(SDL_Renderer* _renderer, InputHandler* _inputHandler) : Actor(_renderer) {
+Player::Player(RenderHandler* _renderHandler, InputHandler* _inputHandler) : Actor(_renderHandler) {
 	hit = { ALLY };
 	hurt = { ENEMY, ENVIRONMENT };
 	pos[0] = 640;
@@ -26,5 +26,5 @@ void Player::Update(float deltaTime) {
 	//pos[0] += direction[0] * deltaTime;
 	//pos[1] += direction[1]*deltaTime;
 
-    Render();
+    Draw();
 }

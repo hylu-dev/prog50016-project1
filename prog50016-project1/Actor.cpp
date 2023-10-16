@@ -2,13 +2,10 @@
 #include "SDL_image.h"
 #include <iostream>
 
-Actor::Actor() {
-
-}
-
-void Actor::Destroy() {
+Actor::~Actor() {
 	SDL_DestroyTexture(texture);
 	texture = nullptr;
+	renderHandler = nullptr;
 }
 
 void Actor::Collide(Actor* actor) {
@@ -37,19 +34,16 @@ void Actor::Collide(Actor* actor) {
 
 void Actor::TakeDamage(int damage) {
 	lives -= damage;
-	if (lives < 0) {
-		Destroy();
-	}
 }
 
-void Actor::Render() {
+void Actor::Draw() {
 	renderRect = { (int)pos[0], (int)pos[1], texSize.x, texSize.y };
-	SDL_RenderCopy(renderer, texture, NULL, &renderRect);
+	renderHandler->DrawTex(texture, &renderRect);
 }
 
 void Actor::Load(std::string path) {
 	SDL_Surface* surface = IMG_Load("Mainplayer/player.png");
-	texture = SDL_CreateTextureFromSurface(renderer, surface);
+	texture = SDL_CreateTextureFromSurface(renderHandler->GetRenderer(), surface);
 	SDL_FreeSurface(surface);
 	surface = nullptr;
 	SDL_QueryTexture(texture, NULL, NULL, &texSize.x, &texSize.y);

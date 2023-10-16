@@ -3,22 +3,14 @@
 
 Game::Game() {
 	prevFrameTime = SDL_GetTicks();
-	window = SDL_CreateWindow("SDL Example", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, 0);
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	inputHandler = new InputHandler();
-	player = new Player(renderer, inputHandler);
+	renderHandler = new RenderHandler();
+	player = new Player(renderHandler, inputHandler);
 }
 
 Game::~Game() {
-	SDL_DestroyWindow(window);
-	window = nullptr;
-	SDL_DestroyRenderer(renderer);
-	renderer = nullptr;
-
-	delete window;
-	delete renderer;
 	delete inputHandler;
-	player->Destroy();
+	delete renderHandler;
 	delete player;
 }
 
@@ -30,11 +22,9 @@ void Game::Play() {
 		inputHandler->Update(&quit);
 		
 		// Render Objects here
-		SDL_SetRenderDrawColor(renderer, 127, 44, 44, 255);
-		SDL_RenderClear(renderer);
-
+		renderHandler->DrawBackground();
 		player->Update(deltaTime);
-		SDL_RenderPresent(renderer);
+		renderHandler->Render();
 	}
 }
 

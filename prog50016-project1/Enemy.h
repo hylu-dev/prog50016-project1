@@ -9,7 +9,7 @@ class Enemy : public Actor {
 
 private:
 
-	Enemy(SDL_Renderer* _renderer);
+	Enemy(RenderHandler* _renderHandler);
 
 	void Update(float deltaTime) override;
 

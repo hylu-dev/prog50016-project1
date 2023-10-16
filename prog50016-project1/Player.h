@@ -15,7 +15,7 @@ private:
 	InputHandler* inputHandler;
 
 public:
-	Player(SDL_Renderer* _renderer, InputHandler* _inputHandler);
+	Player(RenderHandler* _renderHandler, InputHandler* _inputHandler);
 
 	void Update(float deltaTime) override;
 };
