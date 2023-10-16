@@ -9,9 +9,9 @@
 class Player : public Actor {
 
 private:
-	int direction[2] = { 0 };
-	int movement[2] = { 0 };
-	float friction = .2f;
+	float direction[2] = { 0.0f };
+	float movement[2] = { 0.0f };
+	float friction = .998f;
 	InputHandler* inputHandler;
 
 public:
