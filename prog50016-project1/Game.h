@@ -4,12 +4,14 @@
 #define _GAME_H_
 
 #include "SDL.h"
+#include "InputHandler.h"
 #include "Player.h"
 
 class Game {
 
 SDL_Window* window = nullptr;
 SDL_Renderer* renderer = nullptr;
+InputHandler* inputHandler = nullptr;
 Player* player = nullptr;
 float prevFrameTime = 0;
 float deltaTime = 0;

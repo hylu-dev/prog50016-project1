@@ -186,9 +186,12 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
+    <ClCompile Include="json.cpp" />
     <ClCompile Include="Laser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Renderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
@@ -198,8 +201,11 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="json.h" />
     <ClInclude Include="Laser.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Renderer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Asteroid.json" />

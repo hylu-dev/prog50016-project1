@@ -2,6 +2,10 @@
 #include "SDL_image.h"
 #include <iostream>
 
+Actor::Actor() {
+
+}
+
 void Actor::Destroy() {
 	SDL_DestroyTexture(texture);
 	texture = nullptr;
@@ -49,4 +53,5 @@ void Actor::Load(std::string path) {
 	SDL_FreeSurface(surface);
 	surface = nullptr;
 	SDL_QueryTexture(texture, NULL, NULL, &texSize.x, &texSize.y);
+	pos[0] -= texSize.x * .5;
 }

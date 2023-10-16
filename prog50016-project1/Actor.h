@@ -23,6 +23,7 @@ protected:
 	int lives = 0;
 	int damage = 0;
 	int radius = 0;
+	int speed = 0;
 	std::vector<Layer> hit;
 	std::vector<Layer> hurt;
 	SDL_Texture* texture;
