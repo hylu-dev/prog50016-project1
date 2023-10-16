@@ -1,7 +1,7 @@
 #include "Game.h"
 #include <iostream>
 
-void Game::Initialize() {
+Game::Game() {
 	prevFrameTime = SDL_GetTicks();
 	inputHandler = new InputHandler();
 	renderHandler = new RenderHandler();

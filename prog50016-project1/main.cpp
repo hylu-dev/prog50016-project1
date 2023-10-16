@@ -4,7 +4,6 @@
 Game* Game::instance = nullptr;
 
 int main(int argv, char* argc[]) {
-	Game::Get().Initialize();
 	Game::Get().Load();
 	Game::Get().Play();
 	Game::Get().Destroy();

@@ -1,4 +1,5 @@
 #include "RenderHandler.h"
+#include "Game.h"
 
 RenderHandler::RenderHandler() {
 	window = SDL_CreateWindow("Ship Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, 0);
@@ -17,8 +18,8 @@ SDL_Renderer* RenderHandler::GetRenderer() {
 }
 
 void RenderHandler::DrawBackground() {
-	SDL_SetRenderDrawColor(renderer, 127, 44, 44, 255);
 	SDL_RenderClear(renderer);
+	SDL_RenderCopy(renderer, Game::Get().GetTextureManager()->RetrieveTexture("Background/starBackground.png"), NULL, NULL);
 }
 
 void RenderHandler::DrawTex(SDL_Texture* texture, SDL_Rect* renderRect) {

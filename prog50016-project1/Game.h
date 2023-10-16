@@ -8,6 +8,7 @@
 #include "RenderHandler.h"
 #include "TextureManager.h"
 #include "Player.h"
+#include <list>
 
 class Game {
 
@@ -30,8 +31,6 @@ public:
 	inline InputHandler* GetInputHandler() { return inputHandler; }
 	inline TextureManager* GetTextureManager() { return textureManager; }
 
-	void Initialize();
-
 	void UpdateDeltaTime();
 
 	void Play();
@@ -50,7 +49,7 @@ private:
 	float deltaTime = 0;
 
 private:
-	Game() = default;
+	Game();
 	~Game();
 	inline explicit Game(Game const&) = delete;
 	inline Game& operator=(Game const&) = delete;
