@@ -7,7 +7,7 @@
 #include "InputHandler.h"
 #include "RenderHandler.h"
 #include "TextureManager.h"
-#include "Player.h"
+#include "ActorManager.h"
 #include <list>
 
 class Game {
@@ -30,6 +30,7 @@ public:
 	inline RenderHandler* GetRenderHandler() { return renderHandler; }
 	inline InputHandler* GetInputHandler() { return inputHandler; }
 	inline TextureManager* GetTextureManager() { return textureManager; }
+	inline ActorManager* GetActorManager() { return actorManager; }
 
 	void UpdateDeltaTime();
 
@@ -44,7 +45,7 @@ private:
 	InputHandler* inputHandler = nullptr;
 	RenderHandler* renderHandler = nullptr;
 	TextureManager* textureManager = nullptr;
-	Player* player = nullptr;
+	ActorManager* actorManager = nullptr;
 	float prevFrameTime = 0;
 	float deltaTime = 0;
 

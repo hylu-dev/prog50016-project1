@@ -13,8 +13,11 @@ private:
 
 public:
 	Player();
+	~Player() = default;
 
 	void Update(float deltaTime) override;
+
+	void Load();
 };
 
 #endif 

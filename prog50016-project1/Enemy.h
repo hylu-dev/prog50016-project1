@@ -8,11 +8,12 @@
 class Enemy : public Actor {
 
 private:
-
 	Enemy() = default;
+	~Enemy() = default;
+
+	void SetRandomSpawnPosition();
 
 	void Update(float deltaTime) override;
-
 };
 
 #endif

@@ -11,8 +11,27 @@
 
 class ActorManager {
 private:
-	std::list<Actor> actors;
+	std::list<Actor*> actors;
+	Player* player = nullptr;
+	EnemyFactory* enemyFactory = nullptr;
 
+
+public:
+	ActorManager();
+
+	~ActorManager();
+
+	void Update(float deltaTime);
+
+	void AddActor(Actor* actor);
+
+	void RemoveActor(Actor* actor);
+
+	void SpawnEnemy();
+
+	void Save();
+
+	void Load();
 };
 
 #endif

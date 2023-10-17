@@ -48,3 +48,7 @@ void Player::Update(float deltaTime) {
 
     Draw();
 }
+
+void Player::Load() {
+	Actor::Load("Data/Player.json");
+}

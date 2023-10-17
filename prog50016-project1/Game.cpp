@@ -6,16 +6,18 @@ Game::Game() {
 	inputHandler = new InputHandler();
 	renderHandler = new RenderHandler();
 	textureManager = new TextureManager(renderHandler);
-	player = new Player();
+	actorManager = new ActorManager();
 }
 
 Game::~Game() {
 	delete inputHandler;
 	delete renderHandler;
-	delete player;
+	delete textureManager;
+	delete actorManager;
 	inputHandler = nullptr;
 	renderHandler = nullptr;
-	player = nullptr;
+	textureManager = nullptr;
+	actorManager = nullptr;
 }
 
 void Game::Play() {
@@ -27,14 +29,15 @@ void Game::Play() {
 		
 		// Render Objects here
 		renderHandler->DrawBackground();
-		player->Update(deltaTime);
+		actorManager->Update(deltaTime);
 		renderHandler->Render();
 	}
 }
 
 void Game::Load() {
-	player->Load("Data/Player.json");
+	actorManager->Load();
 }
+
 void Game::UpdateDeltaTime() {
 	float currentFrameTime = SDL_GetTicks();
 	deltaTime = currentFrameTime - prevFrameTime;
