@@ -7,11 +7,14 @@
 #include "EnemyFactory.h"
 #include "Enemy.h"
 #include "Asteroid.h"
+#include "AsteroidBig.h"
 #include <list>
 
 class ActorManager {
 private:
 	std::list<Actor*> actors;
+	std::list<Actor*> deletionStack;
+
 	Player* player = nullptr;
 	EnemyFactory* enemyFactory = nullptr;
 
@@ -21,7 +24,7 @@ public:
 
 	~ActorManager();
 
-	void Update(float deltaTime);
+	void Update();
 
 	void AddActor(Actor* actor);
 

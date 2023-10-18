@@ -1,12 +1,8 @@
 {
+    "x": 640,
+    "y": 600,
     "lives": 3,
     "damage": 1,
-    "speed": 0.5,
-    "sprite": "Mainplayer/player.png",
-    "hitLayers": [
-        1
-    ],
-    "hurtLayers": [
-        2, 3
-    ]
+    "speed": 5,
+    "sprite": "Mainplayer/player.png"
 }

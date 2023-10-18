@@ -1,26 +1,28 @@
-#include "Asteroid.h"
+#include "EnemyA.h"
 #include <random>
 #include "Game.h"
 #include <iostream>
 #include "GameTime.h"
 
-Asteroid::Asteroid() {
+EnemyA::EnemyA() {
 	hit = { ENEMY };
-	hurt = { ENVIRONMENT };
+	hurt = { ALLY };
 }
 
-void Asteroid::SetRandomSpawnPosition() {
+void EnemyA::SetRandomSpawnPosition() {
+
 	pos[0] = GameTime::Get().Rand()*Game::Get().GetRenderHandler()->GetWidth();
 }
 
-void Asteroid::Update(float deltaTime) {
-	pos[1] += 100 * speed * deltaTime;
+void EnemyA::Update(float deltaTime) {
+	pos[1] += 100*speed*deltaTime;
+
 	Draw();
 	if (pos[1] > Game::Get().GetRenderHandler()->GetHeight()) {
 		Game::Get().GetActorManager()->RemoveActor(this);
 	}
 }
 
-void Asteroid::Load() {
-	Actor::Load("Data/Asteroid.json");
+void EnemyA::Load() {
+	Actor::Load("Data/EnemyShipA.json");
 }

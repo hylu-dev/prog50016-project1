@@ -1,8 +1,10 @@
 #include "Game.h"
 #include <iostream>
+#include "GameTime.h"
+
+Game* Game::instance = nullptr;
 
 Game::Game() {
-	prevFrameTime = SDL_GetTicks();
 	inputHandler = new InputHandler();
 	renderHandler = new RenderHandler();
 	textureManager = new TextureManager(renderHandler);
@@ -24,22 +26,16 @@ void Game::Play() {
 	std::cout << "Game Start" << std::endl;
 	bool quit = false;
 	while (!quit) {
-		UpdateDeltaTime();
+		GameTime::Get().Update();
 		inputHandler->Update(&quit);
 		
 		// Render Objects here
 		renderHandler->DrawBackground();
-		actorManager->Update(deltaTime);
+		actorManager->Update();
 		renderHandler->Render();
 	}
 }
 
 void Game::Load() {
 	actorManager->Load();
-}
-
-void Game::UpdateDeltaTime() {
-	float currentFrameTime = SDL_GetTicks();
-	deltaTime = currentFrameTime - prevFrameTime;
-	prevFrameTime = currentFrameTime;
 }

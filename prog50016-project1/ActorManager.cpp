@@ -1,4 +1,6 @@
 #include "ActorManager.h"
+#include "GameTime.h"
+#include <iostream>
 
 ActorManager::ActorManager() {
 	player = new Player();
@@ -13,11 +15,16 @@ ActorManager::~ActorManager() {
 	delete player;
 }
 
-void ActorManager::Update(float deltaTime) {
-	player->Update(deltaTime);
+void ActorManager::Update() {
+	player->Update(GameTime::Get().DeltaTime());
+	SpawnEnemy();
 	for (auto& actor : actors) {
-		actor->Update(deltaTime);
+		actor->Update(GameTime::Get().DeltaTime());
 	}
+	for (auto& actor : deletionStack) {
+		actors.remove(actor);
+	}
+	deletionStack.clear();
 }
 
 void ActorManager::AddActor(Actor* actor) {
@@ -25,11 +32,19 @@ void ActorManager::AddActor(Actor* actor) {
 }
 
 void ActorManager::RemoveActor(Actor* actor) {
-	actors.remove(actor);
+	deletionStack.push_back(actor);
 }
 
 void ActorManager::SpawnEnemy() {
-
+	if (GameTime::Get().FrameCount() % 10000 == 0) {
+		AddActor(enemyFactory->GetEnemyA());
+	}
+	if (GameTime::Get().FrameCount() % 2000 == 0) {
+		AddActor(enemyFactory->GetAsteroid());
+	}
+	if (GameTime::Get().FrameCount() % 4000 == 0) {
+		AddActor(enemyFactory->GetAsteroidBig());
+	}
 }
 
 void ActorManager::Save() {

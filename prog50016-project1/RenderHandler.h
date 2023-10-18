@@ -10,12 +10,19 @@ class RenderHandler
 private:
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
+	int width = 1280;
+	int height = 720;
+	bool fullscreen = false;
 
 public:
 	RenderHandler();
 	~RenderHandler();
 
-	SDL_Renderer* GetRenderer();
+	SDL_Renderer* GetRenderer() { return renderer; }
+
+	int GetWidth() { return width;  }
+
+	int GetHeight() { return height; }
 
 	void DrawBackground();
 

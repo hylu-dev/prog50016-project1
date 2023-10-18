@@ -1,19 +1,19 @@
-#include "Asteroid.h"
+#include "AsteroidBig.h"
 #include <random>
 #include "Game.h"
 #include <iostream>
 #include "GameTime.h"
 
-Asteroid::Asteroid() {
+AsteroidBig::AsteroidBig() {
 	hit = { ENEMY };
 	hurt = { ENVIRONMENT };
 }
 
-void Asteroid::SetRandomSpawnPosition() {
+void AsteroidBig::SetRandomSpawnPosition() {
 	pos[0] = GameTime::Get().Rand()*Game::Get().GetRenderHandler()->GetWidth();
 }
 
-void Asteroid::Update(float deltaTime) {
+void AsteroidBig::Update(float deltaTime) {
 	pos[1] += 100 * speed * deltaTime;
 	Draw();
 	if (pos[1] > Game::Get().GetRenderHandler()->GetHeight()) {
@@ -21,6 +21,6 @@ void Asteroid::Update(float deltaTime) {
 	}
 }
 
-void Asteroid::Load() {
-	Actor::Load("Data/Asteroid.json");
+void AsteroidBig::Load() {
+	Actor::Load("Data/AsteroidBig.json");
 }

@@ -19,10 +19,11 @@ enum Layer
 class Actor {
 protected:
 	float pos[2] = { 0 };
+	float move[2] = { 0 };
 	int lives = 1;
 	int damage = 1;
 	float radius = 1;
-	float speed = .5;
+	float speed = 2;
 	std::vector<Layer> hit;
 	std::vector<Layer> hurt;
 	SDL_Texture* texture;
@@ -32,7 +33,7 @@ protected:
 public:
 	Actor() = default;
 
-	virtual ~Actor();
+	~Actor();
 
 	virtual void Update(float deltaTime) = 0;
 

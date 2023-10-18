@@ -9,7 +9,7 @@ class Player : public Actor {
 private:
 	float direction[2] = { 0.0f };
 	float movement[2] = { 0.0f };
-	float friction = .998f;
+	float friction = .999f;
 
 public:
 	Player();

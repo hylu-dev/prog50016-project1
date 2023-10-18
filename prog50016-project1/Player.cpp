@@ -2,16 +2,16 @@
 #include <iostream>
 #include <cmath>
 #include "Game.h"
+#include "GameTime.h"
 
 Player::Player() {
 	hit = { ALLY };
 	hurt = { ENEMY, ENVIRONMENT };
-	pos[0] = 640;
-	pos[1] = 600;
 }
 
 void Player::Update(float deltaTime) {
-	if (Game::Get().GetInputHandler()->GetKeyState(LEFT)) {
+	// controls
+	if (Game::Get().GetInputHandler()->GetKeyState(LEFT) ) {
 		direction[0] = -1;
 	}
 	if (Game::Get().GetInputHandler()->GetKeyState(RIGHT)) {
@@ -37,14 +37,23 @@ void Player::Update(float deltaTime) {
 		direction[1] = direction[1] / magnitude;
 	}
 	
-	movement[0] += direction[0] * speed * deltaTime * 0.005f;
-	movement[1] += direction[1] * speed * deltaTime * 0.005f;
+	movement[0] += direction[0] * speed * deltaTime;
+	movement[1] += direction[1] * speed * deltaTime;
 
 	movement[0] *= friction;
 	movement[1] *= friction;
 
 	pos[0] += movement[0];
 	pos[1] += movement[1];
+
+	if (pos[0] < 0) { pos[0] = 0; }
+	if (pos[0] > Game::Get().GetRenderHandler()->GetWidth()) {
+		pos[0] = Game::Get().GetRenderHandler()->GetWidth();
+ }
+	if (pos[1] < 0) { pos[1] = 0; }
+	if (pos[1] > Game::Get().GetRenderHandler()->GetHeight()) {
+		pos[1] = Game::Get().GetRenderHandler()->GetHeight();
+	}
 
     Draw();
 }

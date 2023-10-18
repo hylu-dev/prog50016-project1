@@ -7,6 +7,7 @@
 Actor::~Actor() {
 	SDL_DestroyTexture(texture);
 	texture = nullptr;
+	std::cout << "Actor Destroy" << std::endl;
 }
 
 void Actor::Collide(Actor* actor) {
@@ -38,7 +39,7 @@ void Actor::TakeDamage(int damage) {
 }
 
 void Actor::Draw() {
-	renderRect = { (int)pos[0], (int)pos[1], texSize.x, texSize.y };
+	renderRect = { (int)(pos[0]- texSize.x * .5f), (int)(pos[1] - texSize.y * .5f), texSize.x, texSize.y };
 	Game::Get().GetRenderHandler()->DrawTex(texture, &renderRect);
 }
 
@@ -47,6 +48,12 @@ void Actor::Load(std::string path) {
 	std::string str((std::istreambuf_iterator<char>(inputStream)), std::istreambuf_iterator<char>());
 	json::JSON document = json::JSON::Load(str);
 
+	if (document.hasKey("x")) {
+		pos[0] = document["x"].ToInt();
+	}
+	if (document.hasKey("y")) {
+		pos[1] = document["y"].ToInt();
+	}
 	if (document.hasKey("lives")) {
 		lives = document["lives"].ToInt();
 	}
@@ -61,7 +68,7 @@ void Actor::Load(std::string path) {
 	}
 
 	SDL_QueryTexture(texture, NULL, NULL, &texSize.x, &texSize.y);
-	pos[0] -= texSize.x * .5f;
+	pos[1] -= texSize.y;
 	if (texSize.x < texSize.y) {
 		radius = texSize.x * .5f;
 	}

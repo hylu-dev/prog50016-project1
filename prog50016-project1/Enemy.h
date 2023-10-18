@@ -6,9 +6,10 @@
 #include "Actor.h"
 
 class Enemy : public Actor {
+	int spawnRate = 1;
 
 private:
-	Enemy() = default;
+	Enemy();
 	~Enemy() = default;
 
 	void SetRandomSpawnPosition();

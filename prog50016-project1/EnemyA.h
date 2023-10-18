@@ -1,17 +1,17 @@
 #pragma once
 
-#ifndef _ASTEROID_H_
-#define _ASTEROID_H_
+#ifndef _ENEMY_A_H_
+#define _ENEMY_A_H_
 
 #include "Actor.h"
 
-class Asteroid : public Actor {
+class EnemyA : public Actor {
 private:
 	int spawnRate = 1;
 
 public:
-	Asteroid();
-	~Asteroid() = default;
+	EnemyA();
+	~EnemyA() = default;
 
 	void SetRandomSpawnPosition();
 

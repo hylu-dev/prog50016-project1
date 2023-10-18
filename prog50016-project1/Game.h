@@ -32,8 +32,6 @@ public:
 	inline TextureManager* GetTextureManager() { return textureManager; }
 	inline ActorManager* GetActorManager() { return actorManager; }
 
-	void UpdateDeltaTime();
-
 	void Play();
 
 	void Load();
@@ -46,8 +44,6 @@ private:
 	RenderHandler* renderHandler = nullptr;
 	TextureManager* textureManager = nullptr;
 	ActorManager* actorManager = nullptr;
-	float prevFrameTime = 0;
-	float deltaTime = 0;
 
 private:
 	Game();

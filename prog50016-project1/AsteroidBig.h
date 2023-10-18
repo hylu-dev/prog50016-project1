@@ -1,17 +1,17 @@
 #pragma once
 
-#ifndef _ASTEROID_H_
-#define _ASTEROID_H_
+#ifndef _ASTEROID_BIG_H_
+#define _ASTEROID_BIG_H_
 
 #include "Actor.h"
 
-class Asteroid : public Actor {
+class AsteroidBig : public Actor {
 private:
 	int spawnRate = 1;
 
 public:
-	Asteroid();
-	~Asteroid() = default;
+	AsteroidBig();
+	~AsteroidBig() = default;
 
 	void SetRandomSpawnPosition();
 

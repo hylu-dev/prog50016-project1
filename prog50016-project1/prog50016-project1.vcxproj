@@ -181,10 +181,10 @@
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorManager.cpp" />
-    <ClCompile Include="AlienShipA.cpp" />
-    <ClCompile Include="AlienShipB.cpp" />
+    <ClCompile Include="AsteroidBig.cpp" />
+    <ClCompile Include="EnemyA.cpp" />
+    <ClCompile Include="EnemyB.cpp" />
     <ClCompile Include="Asteroid.cpp" />
-    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputHandler.cpp" />
@@ -194,15 +194,16 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderHandler.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="UIDisplay.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorManager.h" />
-    <ClInclude Include="AlienShipA.h" />
-    <ClInclude Include="AlienShipB.h" />
+    <ClInclude Include="AsteroidBig.h" />
+    <ClInclude Include="EnemyA.h" />
+    <ClInclude Include="EnemyB.h" />
     <ClInclude Include="Asteroid.h" />
-    <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputHandler.h" />
@@ -211,10 +212,12 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="RenderHandler.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="GameTime.h" />
     <ClInclude Include="UIDisplay.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Asteroid.json" />
+    <None Include="Data\AsteroidBig.json" />
     <None Include="Data\EnemyShipA.json" />
     <None Include="Data\Player.json" />
     <None Include="Data\System.json" />
