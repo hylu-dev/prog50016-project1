@@ -18,6 +18,10 @@ private:
 	Player* player = nullptr;
 	EnemyFactory* enemyFactory = nullptr;
 
+private:
+	void CalculateCollisions();
+
+	void SpawnEnemy();
 
 public:
 	ActorManager();
@@ -29,8 +33,6 @@ public:
 	void AddActor(Actor* actor);
 
 	void RemoveActor(Actor* actor);
-
-	void SpawnEnemy();
 
 	void Save();
 

@@ -1,0 +1,6 @@
+{
+    "lives": 1,
+    "damage": 1,
+    "speed": 100,
+    "sprite": "Mainplayer/laserGreen.png"
+}

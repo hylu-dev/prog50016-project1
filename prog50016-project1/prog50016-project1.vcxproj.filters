@@ -236,5 +236,8 @@
     <None Include="Data\AsteroidBig.json">
       <Filter>Resource Files\Data</Filter>
     </None>
+    <None Include="Data\Laser.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
   </ItemGroup>
 </Project>

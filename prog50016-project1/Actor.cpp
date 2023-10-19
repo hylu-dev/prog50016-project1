@@ -5,13 +5,11 @@
 #include <fstream>
 
 Actor::~Actor() {
-	SDL_DestroyTexture(texture);
 	texture = nullptr;
-	std::cout << "Actor Destroy" << std::endl;
 }
 
 void Actor::Collide(Actor* actor) {
-	float sqDist = (actor->pos[0] - pos[0]) * (actor->pos[0] - pos[0]) + (actor->pos[1] - pos[0]) * (actor->pos[1] - pos[0]);
+	float sqDist = (actor->pos[0] - pos[0]) * (actor->pos[0] - pos[0]) + (actor->pos[1] - pos[1]) * (actor->pos[1] - pos[1]);
 	float sqRads = radius * radius + 2 * radius * actor->radius + actor->radius * actor->radius;
 	if (sqDist < sqRads) {
 		for (Layer& l1 : hit) {
@@ -36,6 +34,9 @@ void Actor::Collide(Actor* actor) {
 
 void Actor::TakeDamage(int damage) {
 	lives -= damage;
+	if (lives <= 0) {
+		Game::Get().GetActorManager()->RemoveActor(this);
+	}
 }
 
 void Actor::Draw() {

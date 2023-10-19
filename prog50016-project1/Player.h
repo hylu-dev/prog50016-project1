@@ -11,11 +11,18 @@ private:
 	float movement[2] = { 0.0f };
 	float friction = .999f;
 
+private:
+	void HandleMovement(float deltaTime);
+
+	void HandleFire();
+
 public:
 	Player();
 	~Player() = default;
 
 	void Update(float deltaTime) override;
+
+	void TakeDamage(int damage) override;
 
 	void Load();
 };

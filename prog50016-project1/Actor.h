@@ -39,7 +39,7 @@ public:
 
 	void Collide(Actor* actor);
 
-	void TakeDamage(int value);
+	virtual void TakeDamage(int value);
 
 	void Draw();
 

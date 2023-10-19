@@ -219,6 +219,7 @@
     <None Include="Data\Asteroid.json" />
     <None Include="Data\AsteroidBig.json" />
     <None Include="Data\EnemyShipA.json" />
+    <None Include="Data\Laser.json" />
     <None Include="Data\Player.json" />
     <None Include="Data\System.json" />
   </ItemGroup>

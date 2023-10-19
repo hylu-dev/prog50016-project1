@@ -16,6 +16,7 @@ ActorManager::~ActorManager() {
 }
 
 void ActorManager::Update() {
+	CalculateCollisions();
 	player->Update(GameTime::Get().DeltaTime());
 	SpawnEnemy();
 	for (auto& actor : actors) {
@@ -23,8 +24,15 @@ void ActorManager::Update() {
 	}
 	for (auto& actor : deletionStack) {
 		actors.remove(actor);
+		delete actor;
 	}
 	deletionStack.clear();
+}
+
+void ActorManager::CalculateCollisions() {
+	for (auto& actor : actors) {
+		player->Collide(actor);
+	}
 }
 
 void ActorManager::AddActor(Actor* actor) {

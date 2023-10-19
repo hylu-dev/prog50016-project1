@@ -14,7 +14,7 @@ void Asteroid::SetRandomSpawnPosition() {
 }
 
 void Asteroid::Update(float deltaTime) {
-	pos[1] += 100 * speed * deltaTime;
+	pos[1] += 200 * speed * deltaTime;
 	Draw();
 	if (pos[1] > Game::Get().GetRenderHandler()->GetHeight()) {
 		Game::Get().GetActorManager()->RemoveActor(this);
