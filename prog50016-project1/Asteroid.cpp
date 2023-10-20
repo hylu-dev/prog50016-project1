@@ -5,8 +5,8 @@
 #include "GameTime.h"
 
 Asteroid::Asteroid() {
-	hit = { ENEMY };
-	hurt = { ENVIRONMENT };
+	hit = { ENVIRONMENT };
+	hurt = { ALLY };
 }
 
 void Asteroid::SetRandomSpawnPosition() {
@@ -14,7 +14,7 @@ void Asteroid::SetRandomSpawnPosition() {
 }
 
 void Asteroid::Update(float deltaTime) {
-	pos[1] += 200 * speed * deltaTime;
+	pos[1] += speed * deltaTime;
 	Draw();
 	if (pos[1] > Game::Get().GetRenderHandler()->GetHeight()) {
 		Game::Get().GetActorManager()->RemoveActor(this);

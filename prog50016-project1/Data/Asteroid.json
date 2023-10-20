@@ -1,6 +1,6 @@
 {
     "lives": 1,
     "damage": 1,
-    "speed": 0.5,
+    "speed": 200,
     "sprite": "Asteroids/meteorSmall.png"
 }

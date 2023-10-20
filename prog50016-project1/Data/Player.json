@@ -1,8 +1,8 @@
 {
     "x": 640,
     "y": 600,
-    "lives": 3,
+    "lives": 6,
     "damage": 1,
-    "speed": 5,
+    "speed": 2,
     "sprite": "Mainplayer/player.png"
 }

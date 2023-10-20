@@ -10,6 +10,19 @@ Player::Player() {
 	hurt = { ENEMY, ENVIRONMENT };
 }
 
+void Player::Draw() {
+	if (invincible) {
+		Game::Get().GetRenderHandler()->SetColor(255, 150, 255);
+	}
+	Game::Get().GetRenderHandler()->DrawTex(texture, pos[0], pos[1]);
+}
+
+void Player::Collide(Actor* actor) {
+	if (!invincible) {
+		Actor::Collide(actor);
+	}
+}
+
 void Player::HandleMovement(float deltaTime) {
 	if (Game::Get().GetInputHandler()->GetKeyState(LEFT)) {
 		direction[0] = -1;
@@ -48,11 +61,11 @@ void Player::HandleMovement(float deltaTime) {
 
 	if (pos[0] < 0) { pos[0] = 0; }
 	if (pos[0] > Game::Get().GetRenderHandler()->GetWidth()) {
-		pos[0] = Game::Get().GetRenderHandler()->GetWidth();
+		pos[0] = (float)Game::Get().GetRenderHandler()->GetWidth();
 	}
 	if (pos[1] < 0) { pos[1] = 0; }
 	if (pos[1] > Game::Get().GetRenderHandler()->GetHeight()) {
-		pos[1] = Game::Get().GetRenderHandler()->GetHeight();
+		pos[1] = (float)Game::Get().GetRenderHandler()->GetHeight();
 	}
 }
 
@@ -68,18 +81,34 @@ void Player::HandleFire() {
 }
 
 void Player::Update(float deltaTime) {
+	HandleIFrames(deltaTime);
 	HandleMovement(deltaTime);
 	HandleFire();
     Draw();
 }
 
+void Player::HandleIFrames(float deltaTime) {
+	if (invincible) {
+		iFrames += deltaTime;
+	}
+	if (iFrames > 2) {
+		invincible = false;
+		iFrames = 0;
+	}
+}
+
 void Player::TakeDamage(int damage) {
-	lives -= damage;
 	if (lives <= 0) {
 		std::cout << "Dead" << std::endl;
+	}
+	else if (!invincible) {
+		lives -= damage;
+		invincible = true;
+		Game::Get().GetUIDisplay()->SetLives(lives);
 	}
 }
 
 void Player::Load() {
 	Actor::Load("Data/Player.json");
+	Game::Get().GetUIDisplay()->SetLives(lives);
 }

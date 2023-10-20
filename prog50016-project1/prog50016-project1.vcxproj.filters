@@ -122,6 +122,12 @@
     <Font Include="Hud\couri.ttf">
       <Filter>Resource Files\Hud</Filter>
     </Font>
+    <Font Include="Hud\SourceCodePro-Medium.ttf">
+      <Filter>Resource Files\Hud</Filter>
+    </Font>
+    <Font Include="Hud\SpaceMono-Regular.ttf">
+      <Filter>Resource Files\Hud</Filter>
+    </Font>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

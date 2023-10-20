@@ -16,6 +16,7 @@ private:
 	int height = 720;
 	bool fullscreen = false;
 	TTF_Font* font = nullptr;
+	int colorFilter[3] = { 255, 255, 255 };
 
 public:
 	RenderHandler();
@@ -27,11 +28,17 @@ public:
 
 	int GetHeight() { return height; }
 
+	void SetColor(int x, int y, int z);
+
+	void ResetColor();
+
 	void DrawBackground();
 
 	void DrawTex(SDL_Texture* texture, SDL_Rect* renderRect);
 
-	void DrawFontText(std::string message, SDL_Rect* renderRect);
+	SDL_Point DrawTex(SDL_Texture* texture, int x, int y);
+
+	SDL_Point DrawFontText(std::string message, int x, int y);
 
 	void Render();
 };

@@ -27,8 +27,6 @@ protected:
 	std::vector<Layer> hit;
 	std::vector<Layer> hurt;
 	SDL_Texture* texture;
-	SDL_Rect renderRect;
-	SDL_Point texSize;
 
 public:
 	Actor() = default;
@@ -37,11 +35,11 @@ public:
 
 	virtual void Update(float deltaTime) = 0;
 
-	void Collide(Actor* actor);
+	virtual void Collide(Actor* actor);
 
 	virtual void TakeDamage(int value);
 
-	void Draw();
+	virtual void Draw();
 
 	virtual void Load(std::string path);
 };

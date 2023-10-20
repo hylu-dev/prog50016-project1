@@ -177,6 +177,8 @@
     <Font Include="Hud\courbd.ttf" />
     <Font Include="Hud\courbi.ttf" />
     <Font Include="Hud\couri.ttf" />
+    <Font Include="Hud\SourceCodePro-Medium.ttf" />
+    <Font Include="Hud\SpaceMono-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />

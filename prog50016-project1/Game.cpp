@@ -17,10 +17,12 @@ Game::~Game() {
 	delete renderHandler;
 	delete textureManager;
 	delete actorManager;
+	delete uiDisplay;
 	inputHandler = nullptr;
 	renderHandler = nullptr;
 	textureManager = nullptr;
 	actorManager = nullptr;
+	uiDisplay = nullptr;
 }
 
 void Game::Play() {
@@ -29,10 +31,9 @@ void Game::Play() {
 	while (!quit) {
 		GameTime::Get().Update();
 		inputHandler->Update(&quit);
-		
-		// Render Objects here
 		renderHandler->DrawBackground();
 		actorManager->Update();
+		uiDisplay->Update();
 		renderHandler->Render();
 	}
 }

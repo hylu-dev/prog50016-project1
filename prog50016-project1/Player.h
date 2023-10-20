@@ -10,17 +10,23 @@ private:
 	float direction[2] = { 0.0f };
 	float movement[2] = { 0.0f };
 	float friction = .999f;
+	float iFrames = 0;
+	bool invincible = false;
 
 private:
 	void HandleMovement(float deltaTime);
-
 	void HandleFire();
+	void HandleIFrames(float deltaTime);
 
 public:
 	Player();
 	~Player() = default;
 
+	void Draw() override;
+
 	void Update(float deltaTime) override;
+
+	void Collide(Actor* actor) override;
 
 	void TakeDamage(int damage) override;
 

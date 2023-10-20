@@ -13,7 +13,7 @@ void Laser::SetPosition(float x, float y) {
 }
 
 void Laser::Update(float deltaTime) {
-	pos[1] -= 100 * speed * deltaTime;
+	pos[1] -= 200 * speed * deltaTime;
 
 	Draw();
 	if (pos[1] < 0) {

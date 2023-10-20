@@ -20,7 +20,6 @@ public:
 	~TextureManager();
 
 	SDL_Texture* RetrieveTexture(std::string path);
-
 };
 
 #endif

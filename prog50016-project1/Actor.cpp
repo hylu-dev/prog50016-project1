@@ -40,8 +40,7 @@ void Actor::TakeDamage(int damage) {
 }
 
 void Actor::Draw() {
-	renderRect = { (int)(pos[0]- texSize.x * .5f), (int)(pos[1] - texSize.y * .5f), texSize.x, texSize.y };
-	Game::Get().GetRenderHandler()->DrawTex(texture, &renderRect);
+	Game::Get().GetRenderHandler()->DrawTex(texture, pos[0], pos[1]);
 }
 
 void Actor::Load(std::string path) {
@@ -50,24 +49,25 @@ void Actor::Load(std::string path) {
 	json::JSON document = json::JSON::Load(str);
 
 	if (document.hasKey("x")) {
-		pos[0] = document["x"].ToInt();
+		pos[0] = (float)document["x"].ToInt();
 	}
 	if (document.hasKey("y")) {
-		pos[1] = document["y"].ToInt();
+		pos[1] = (float)document["y"].ToInt();
 	}
 	if (document.hasKey("lives")) {
 		lives = document["lives"].ToInt();
 	}
 	if (document.hasKey("damage")) {
-		lives = document["damage"].ToInt();
+		damage = document["damage"].ToInt();
 	}
 	if (document.hasKey("speed")) {
-		lives = document["speed"].ToInt();
+		speed = document["speed"].ToInt();
 	}
 	if (document.hasKey("sprite")) {
 		texture = Game::Get().GetTextureManager()->RetrieveTexture(document["sprite"].ToString());
 	}
 
+	SDL_Point texSize;
 	SDL_QueryTexture(texture, NULL, NULL, &texSize.x, &texSize.y);
 	pos[1] -= texSize.y;
 	if (texSize.x < texSize.y) {
