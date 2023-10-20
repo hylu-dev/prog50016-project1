@@ -9,6 +9,7 @@ Game::Game() {
 	renderHandler = new RenderHandler();
 	textureManager = new TextureManager(renderHandler);
 	actorManager = new ActorManager();
+	uiDisplay = new UIDisplay();
 }
 
 Game::~Game() {

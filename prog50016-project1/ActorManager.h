@@ -8,12 +8,15 @@
 #include "Enemy.h"
 #include "Asteroid.h"
 #include "AsteroidBig.h"
+#include "Laser.h"
 #include <list>
 
 class ActorManager {
 private:
 	std::list<Actor*> actors;
 	std::list<Actor*> deletionStack;
+	std::list<Laser*> laserDeletionStack;
+	std::list<Laser*> lasers;
 
 	Player* player = nullptr;
 	EnemyFactory* enemyFactory = nullptr;
@@ -29,6 +32,10 @@ public:
 	~ActorManager();
 
 	void Update();
+
+	void AddLaser(Laser* laser);
+
+	void RemoveLaser(Laser* laser);
 
 	void AddActor(Actor* actor);
 

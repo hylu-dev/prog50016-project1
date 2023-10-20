@@ -62,7 +62,7 @@ void Player::HandleFire() {
 			Laser* laser = new Laser();
 			laser->Load();
 			laser->SetPosition(pos[0], pos[1]);
-			Game::Get().GetActorManager()->AddActor(laser);
+			Game::Get().GetActorManager()->AddLaser(laser);
 		}
 	}
 }

@@ -5,8 +5,8 @@
 #include "GameTime.h"
 
 AsteroidBig::AsteroidBig() {
-	hit = { ENEMY };
-	hurt = { ENVIRONMENT };
+	hit = { ENVIRONMENT };
+	hurt = { ALLY  };
 }
 
 void AsteroidBig::SetRandomSpawnPosition() {

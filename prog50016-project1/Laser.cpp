@@ -4,7 +4,7 @@
 
 Laser::Laser() {
 	hit = { ALLY };
-	hurt = { ENEMY };
+	hurt = { ENEMY, ENVIRONMENT };
 }
 
 void Laser::SetPosition(float x, float y) {
@@ -17,7 +17,7 @@ void Laser::Update(float deltaTime) {
 
 	Draw();
 	if (pos[1] < 0) {
-		Game::Get().GetActorManager()->RemoveActor(this);
+		Game::Get().GetActorManager()->RemoveLaser(this);
 	}
 }
 

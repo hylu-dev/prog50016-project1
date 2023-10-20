@@ -4,6 +4,7 @@
 #define _RENDER_HANDLER_H_
 
 #include "SDL.h"
+#include <SDL_ttf.h>
 
 class RenderHandler
 {
@@ -13,6 +14,7 @@ private:
 	int width = 1280;
 	int height = 720;
 	bool fullscreen = false;
+	TTF_Font* font = nullptr;
 
 public:
 	RenderHandler();
@@ -27,6 +29,8 @@ public:
 	void DrawBackground();
 
 	void DrawTex(SDL_Texture* texture, SDL_Rect* renderRect);
+
+	void DrawFontText(std::string message, SDL_Rect* renderRect);
 
 	void Render();
 };

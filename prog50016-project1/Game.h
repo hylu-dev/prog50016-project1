@@ -8,6 +8,7 @@
 #include "RenderHandler.h"
 #include "TextureManager.h"
 #include "ActorManager.h"
+#include "UIDisplay.h"
 #include <list>
 
 class Game {
@@ -31,6 +32,7 @@ public:
 	inline InputHandler* GetInputHandler() { return inputHandler; }
 	inline TextureManager* GetTextureManager() { return textureManager; }
 	inline ActorManager* GetActorManager() { return actorManager; }
+	inline UIDisplay* GetUIDisplay() { return uiDisplay; }
 
 	void Play();
 
@@ -44,6 +46,7 @@ private:
 	RenderHandler* renderHandler = nullptr;
 	TextureManager* textureManager = nullptr;
 	ActorManager* actorManager = nullptr;
+	UIDisplay* uiDisplay = nullptr;
 
 private:
 	Game();

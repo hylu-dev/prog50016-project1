@@ -12,6 +12,7 @@ ActorManager::~ActorManager() {
 		delete actor; 
 	}
 	actors.clear();
+	lasers.clear();
 	delete player;
 }
 
@@ -22,17 +23,38 @@ void ActorManager::Update() {
 	for (auto& actor : actors) {
 		actor->Update(GameTime::Get().DeltaTime());
 	}
+	for (auto& laser : lasers) {
+		laser->Update(GameTime::Get().DeltaTime());
+	}
 	for (auto& actor : deletionStack) {
 		actors.remove(actor);
 		delete actor;
 	}
 	deletionStack.clear();
+	for (auto& laser : laserDeletionStack) {
+		lasers.remove(laser);
+		delete laser;
+	}
+	laserDeletionStack.clear();
 }
 
 void ActorManager::CalculateCollisions() {
 	for (auto& actor : actors) {
 		player->Collide(actor);
 	}
+	for (auto& laser : lasers) {
+		for (auto& actor : actors) {
+			laser->Collide(actor);
+		}
+	}
+}
+
+void ActorManager::AddLaser(Laser* laser) {
+	lasers.push_back(laser);
+}
+
+void ActorManager::RemoveLaser(Laser* laser) {
+	laserDeletionStack.push_back(laser);
 }
 
 void ActorManager::AddActor(Actor* actor) {
