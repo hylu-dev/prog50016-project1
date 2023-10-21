@@ -17,9 +17,15 @@ ActorManager::~ActorManager() {
 }
 
 void ActorManager::Update() {
+	CalculateCollisions();
 	player->Update(GameTime::Get().DeltaTime());
 	SpawnEnemy();
-	CalculateCollisions();
+	for (auto& actor : actors) {
+		actor->Update(GameTime::Get().DeltaTime());
+	}
+	for (auto& laser : lasers) {
+ 		laser->Update(GameTime::Get().DeltaTime());
+	}
 	for (auto& actor : deletionStack) {
 		actors.remove(actor);
 		delete actor;
@@ -28,12 +34,6 @@ void ActorManager::Update() {
 	for (auto& laser : laserDeletionStack) {
 		lasers.remove(laser);
 		delete laser;
-	}
-	for (auto& actor : actors) {
-		actor->Update(GameTime::Get().DeltaTime());
-	}
-	for (auto& laser : lasers) {
-		laser->Update(GameTime::Get().DeltaTime());
 	}
 	laserDeletionStack.clear();
 }

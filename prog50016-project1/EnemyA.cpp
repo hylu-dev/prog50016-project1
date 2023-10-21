@@ -15,7 +15,7 @@ void EnemyA::SetRandomSpawnPosition() {
 }
 
 void EnemyA::Update(float deltaTime) {
-	pos[1] += 100*speed*deltaTime;
+	pos[1] += speed*deltaTime;
 
 	Draw();
 	if (pos[1] > Game::Get().GetRenderHandler()->GetHeight()) {

@@ -12,8 +12,15 @@ void Laser::SetPosition(float x, float y) {
 	pos[1] = y;
 }
 
+void Laser::TakeDamage(int damage) {
+	lives -= damage;
+	if (lives <= 0) {
+		Game::Get().GetActorManager()->RemoveLaser(this);
+	}
+}
+
 void Laser::Update(float deltaTime) {
-	pos[1] -= 200 * speed * deltaTime;
+	pos[1] -= speed * deltaTime;
 
 	Draw();
 	if (pos[1] < 0) {

@@ -13,6 +13,8 @@ public:
 	Laser();
 	~Laser() = default;
 
+	void TakeDamage(int damage) override;
+
 	void SetPosition(float x, float y);
 
 	void Update(float deltaTime) override;
