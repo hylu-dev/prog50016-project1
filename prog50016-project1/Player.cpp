@@ -14,7 +14,7 @@ void Player::Draw() {
 	if (invincible) {
 		Game::Get().GetRenderHandler()->SetColor(255, 150, 255);
 	}
-	Game::Get().GetRenderHandler()->DrawTex(texture, (int)pos[0], (int)pos[1], true, 1/(abs(movement[0])*.2+1), 1, 0.0f);
+	Game::Get().GetRenderHandler()->DrawTex(texture, (int)pos[0], (int)pos[1], true, 1/(abs(movement[0])*.2f+1), 1, 0.0f);
 }
 
 void Player::Collide(Actor* actor) {
@@ -71,7 +71,7 @@ void Player::HandleMovement(float deltaTime) {
 
 void Player::HandleFire() {
 	if (Game::Get().GetInputHandler()->GetKeyState(FIRE)) {
-		if (GameTime::Get().FrameCount() % 100 == 0) {
+		if (GameTime::Get().FrameCount() % 50 == 0) {
 			Laser* laser = new Laser();
 			laser->Load();
 			laser->SetPosition(pos[0], pos[1]);
