@@ -32,7 +32,7 @@ void Game::Play() {
 		GameTime::Get().Update();
 		inputHandler->Update(&quit);
 		renderHandler->DrawBackground();
-		actorManager->Update();
+		actorManager->Update(GameTime::Get().DeltaTime());
 		uiDisplay->Update();
 		renderHandler->Render();
 	}

@@ -7,7 +7,6 @@
 
 class AsteroidBig : public Actor {
 private:
-	int spawnRate = 1;
 
 public:
 	AsteroidBig();

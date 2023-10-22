@@ -4,14 +4,12 @@
 #define _ENEMY_B_H_
 
 #include "Actor.h"
+#include "Ship.h"
 
-class EnemyB : public Actor {
-private:
-	int spawnRate = 1;
-
+class EnemyB : public Ship {
 private:
 	void HandleMovement(float deltaTime);
-	void HandleFire();
+	void HandleFire(float deltaTime);
 
 public:
 	EnemyB();

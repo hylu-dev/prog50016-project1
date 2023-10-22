@@ -4,5 +4,6 @@
     "lives": 3,
     "damage": 5,
     "speed": 20,
+    "fireRate": 0.2,
     "sprite": "Mainplayer/player.png"
 }

@@ -6,13 +6,13 @@
 #include "Actor.h"
 #include "Ship.h"
 
-class EnemyA : public Actor, public Ship {
+class EnemyA : public Ship {
 private:
 	int spawnRate = 1;
 
 private:
 	void HandleMovement(float deltaTime);
-	void HandleFire();
+	void HandleFire(float deltaTime);
 
 public:
 	EnemyA();

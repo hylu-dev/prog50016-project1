@@ -23,9 +23,18 @@ private:
 	Player* player = nullptr;
 	EnemyFactory* enemyFactory = nullptr;
 
+	float asteroidCounter = 0.0f;
+	float asteroidBigCounter = 0.0f;
+	float enemyACounter = 0.0f;
+	float enemyBCounter = 0.0f;
+	float asteroidSpawnRate = 1;
+	float asteroidBigSpawnRate = 1;
+	float enemyASpawnRate = 1;
+	float enemyBSpawnRate = 1;
+
 private:
 	void CalculateCollisions();
-	void SpawnEnemy();
+	void SpawnEnemy(float deltaTime);
 	void Destroy();
 
 public:
@@ -33,7 +42,7 @@ public:
 
 	~ActorManager();
 
-	void Update();
+	void Update(float deltaTime);
 
 	Player* GetPlayer() { return player; }
 

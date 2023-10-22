@@ -1,6 +1,8 @@
 #include "ActorManager.h"
 #include "GameTime.h"
 #include <iostream>
+#include "json.h"
+#include <fstream>
 
 ActorManager::~ActorManager() {
 	Destroy();
@@ -13,10 +15,10 @@ void ActorManager::Initialize() {
 	Load();
 }
 
-void ActorManager::Update() {
+void ActorManager::Update(float deltaTime) {
 	CalculateCollisions();
 	player->Update(GameTime::Get().DeltaTime());
-	SpawnEnemy();
+	SpawnEnemy(deltaTime);
 	for (auto& actor : actors) {
 		actor->Update(GameTime::Get().DeltaTime());
 	}
@@ -81,17 +83,26 @@ void ActorManager::RemoveActor(Actor* actor) {
 	deletionStack.push_back(actor);
 }
 
-void ActorManager::SpawnEnemy() {
-	if (GameTime::Get().FrameCount() % 1000 == 0) {
+void ActorManager::SpawnEnemy(float deltaTime) {
+	asteroidCounter += deltaTime;
+	asteroidBigCounter += deltaTime;
+	enemyACounter += deltaTime;
+	enemyBCounter += deltaTime;
+
+	if (enemyACounter > enemyASpawnRate) {
+		enemyACounter = 0;
 		AddActor(enemyFactory->GetEnemyA());
 	}
-	if (GameTime::Get().FrameCount() % 2000 == 0) {
+	if (enemyBCounter > enemyBSpawnRate) {
+		enemyBCounter = 0;
 		AddActor(enemyFactory->GetEnemyB());
 	}
-	if (GameTime::Get().FrameCount() % 200 == 0) {
+	if (asteroidCounter > asteroidSpawnRate) {
+		asteroidCounter = 0;
 		AddActor(enemyFactory->GetAsteroid());
 	}
-	if (GameTime::Get().FrameCount() % 1000 == 0) {
+	if (asteroidBigCounter > asteroidBigSpawnRate) {
+		asteroidBigCounter = 0;
 		AddActor(enemyFactory->GetAsteroidBig());
 	}
 }
@@ -102,4 +113,22 @@ void ActorManager::Save() {
 
 void ActorManager::Load() {
 	player->Load();
+
+	std::ifstream inputStream("Data/SpawnRates.json");
+	std::string str((std::istreambuf_iterator<char>(inputStream)), std::istreambuf_iterator<char>());
+	json::JSON document = json::JSON::Load(str);
+
+	if (document.hasKey("asteroid")) {
+		asteroidSpawnRate = document["asteroid"].ToFloat();
+	}
+	if (document.hasKey("asteroidBig")) {
+		asteroidBigSpawnRate = document["asteroidBig"].ToFloat();
+	}
+	if (document.hasKey("enemyShipA")) {
+		enemyASpawnRate = document["enemyShipA"].ToFloat();
+	}
+	if (document.hasKey("enemyShipB")) {
+		enemyBSpawnRate = document["enemyShipB"].ToFloat();
+	}
+
 }

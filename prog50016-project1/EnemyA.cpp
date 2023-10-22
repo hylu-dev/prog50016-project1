@@ -23,8 +23,10 @@ void EnemyA::HandleMovement(float deltaTime) {
 	pos[1] += move[1] * speed * deltaTime;
 }
 
-void EnemyA::HandleFire() {
-	if (GameTime::Get().FrameCount() % 500 == 0) {
+void EnemyA::HandleFire(float deltaTime) {
+	fireRateCounter += deltaTime;
+	if (fireRateCounter > fireRate) {
+		fireRateCounter = 0;
 		EnemyLaserA* laser = new EnemyLaserA();
 		laser->Load();
 		laser->Initialize(pos[0], pos[1]);
@@ -40,7 +42,7 @@ void EnemyA::Initialize() {
 
 void EnemyA::Update(float deltaTime) {
 	HandleMovement(deltaTime);
-	HandleFire();
+	HandleFire(deltaTime);
 
 	Draw();
 	if (pos[1] > Game::Get().GetRenderHandler()->GetHeight()+50) {
@@ -49,5 +51,5 @@ void EnemyA::Update(float deltaTime) {
 }
 
 void EnemyA::Load() {
-	Actor::Load("Data/EnemyShipA.json");
+	Ship::Load("Data/EnemyShipA.json");
 }

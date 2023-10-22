@@ -197,6 +197,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RenderHandler.cpp" />
+    <ClCompile Include="Ship.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="UIDisplay.cpp" />
@@ -231,6 +232,7 @@
     <None Include="Data\EnemyShipB.json" />
     <None Include="Data\Laser.json" />
     <None Include="Data\Player.json" />
+    <None Include="Data\SpawnRates.json" />
     <None Include="Data\System.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

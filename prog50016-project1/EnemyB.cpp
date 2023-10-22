@@ -22,8 +22,10 @@ void EnemyB::TakeDamage(int damage) {
 		Game::Get().GetActorManager()->RemoveActor(this);
 	}
 }
-void EnemyB::HandleFire() {
-	if (GameTime::Get().FrameCount() % 500 == 0) {
+void EnemyB::HandleFire(float deltaTime) {
+	fireRateCounter += deltaTime;
+	if (fireRateCounter > fireRate) {
+		fireRateCounter = 0;
 		EnemyLaserB* laser = new EnemyLaserB();
 		laser->Load();
 		laser->Initialize(pos[0], pos[1]);
@@ -39,7 +41,7 @@ void EnemyB::Initialize() {
 
 void EnemyB::Update(float deltaTime) {
 	HandleMovement(deltaTime);
-	HandleFire();
+	HandleFire(deltaTime);
 
 	Draw();
 	if (pos[1] > Game::Get().GetRenderHandler()->GetHeight() + 50) {
@@ -48,5 +50,5 @@ void EnemyB::Update(float deltaTime) {
 }
 
 void EnemyB::Load() {
-	Actor::Load("Data/EnemyShipB.json");
+	Ship::Load("Data/EnemyShipB.json");
 }

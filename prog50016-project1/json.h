@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef _JSON_H_
+#define _JSON_J_
+
 #include <cstdint>
 #include <cmath>
 #include <cctype>
@@ -644,3 +647,5 @@ namespace json {
 		}
 	}
 } // End Namespace json
+
+#endif
