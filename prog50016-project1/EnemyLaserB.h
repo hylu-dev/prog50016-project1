@@ -14,6 +14,10 @@ public:
 	EnemyLaserB();
 	~EnemyLaserB() = default;
 
+	float GetAngle() { return angle; }
+
+	void SetAngle(float val) { angle = val; }
+
 	void Draw() override;
 
 	void TakeDamage(int damage) override;

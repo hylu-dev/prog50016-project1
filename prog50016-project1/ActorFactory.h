@@ -7,8 +7,11 @@
 #include "EnemyB.h"
 #include "Asteroid.h"
 #include "AsteroidBig.h"
+#include "EnemyLaserA.h"
+#include "EnemyLaserB.h"
+#include "Laser.h"
 
-class EnemyFactory {
+class ActorFactory {
 
 public:
 	EnemyA* GetEnemyA();
@@ -18,6 +21,12 @@ public:
 	Asteroid* GetAsteroid();
 
 	AsteroidBig* GetAsteroidBig();
+
+	EnemyLaserA* GetEnemyLaserA();
+
+	EnemyLaserB* GetEnemyLaserB();
+
+	Laser* GetLaser();
 };
 
 #endif

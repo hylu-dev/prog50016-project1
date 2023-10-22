@@ -25,6 +25,8 @@ public:
 
 	void Draw() override;
 
+	void SetLives(int val) override;
+
 	void Update(float deltaTime) override;
 
 	void Collide(Actor* actor) override;

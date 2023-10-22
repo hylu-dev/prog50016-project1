@@ -8,6 +8,12 @@
 Player::Player() {
 	hit = { ALLY };
 	hurt = { ENEMY, ENVIRONMENT };
+	name = "player";
+}
+
+void Player::SetLives(int val) {
+	lives = val;
+	Game::Get().GetUIDisplay()->SetLives(lives);
 }
 
 void Player::Draw() {

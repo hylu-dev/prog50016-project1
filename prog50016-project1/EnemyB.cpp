@@ -8,11 +8,32 @@
 EnemyB::EnemyB() {
 	hit = { ENEMY };
 	hurt = { ALLY };
+	name = "enemyB";
+}
+
+void EnemyB::Initialize() {
+	pos[0] = GameTime::Get().Rand() * Game::Get().GetRenderHandler()->GetWidth();
+	move[0] = 0;
+	move[1] = 1;
 }
 
 void EnemyB::HandleMovement(float deltaTime) {
-	pos[0] += move[0] * speed * deltaTime;
-	pos[1] += move[1] * speed * deltaTime;
+	movementCounter += GameTime::Get().DeltaTime();
+
+	if (movementCounter > movementInterval) {
+		movementCounter = 0;
+		targetPos[0] = GameTime::Get().Rand() * Game::Get().GetRenderHandler()->GetWidth();
+		targetPos[1] += GameTime::Get().Rand() * Game::Get().GetRenderHandler()->GetHeight()/2;
+		move[0] = pos[0] < targetPos[0] ? 1 : -1;
+	}
+
+	if (std::abs(pos[0] - targetPos[0]) > 0.1) {
+		pos[0] += move[0] * speed * deltaTime;
+	}
+
+	if (std::abs(pos[01] - targetPos[1]) > 0.1) {
+		pos[1] += move[1] * speed * deltaTime;
+	}
 }
 
 void EnemyB::TakeDamage(int damage) {
@@ -31,12 +52,6 @@ void EnemyB::HandleFire(float deltaTime) {
 		laser->Initialize(pos[0], pos[1]);
 		Game::Get().GetActorManager()->AddActor(laser);
 	}
-}
-
-void EnemyB::Initialize() {
-	pos[0] = GameTime::Get().Rand() * Game::Get().GetRenderHandler()->GetWidth();
-	move[0] = 0;
-	move[1] = 1;
 }
 
 void EnemyB::Update(float deltaTime) {

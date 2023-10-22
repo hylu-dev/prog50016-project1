@@ -5,6 +5,7 @@
 EnemyLaserA::EnemyLaserA() {
 	hit = { ENEMY };
 	hurt = { ALLY };
+	name = "enemyLaserA";
 }
 
 void EnemyLaserA::Initialize(float x, float y) {

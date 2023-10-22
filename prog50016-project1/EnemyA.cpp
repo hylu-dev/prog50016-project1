@@ -8,6 +8,7 @@
 EnemyA::EnemyA() {
 	hit = { ENEMY };
 	hurt = { ALLY };
+	name = "enemyA";
 }
 
 void EnemyA::TakeDamage(int damage) {

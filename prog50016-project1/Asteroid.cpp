@@ -7,6 +7,7 @@
 Asteroid::Asteroid() {
 	hit = { ENVIRONMENT };
 	hurt = { ALLY };
+	name = "asteroid";
 }
 
 void Asteroid::Initialize() {

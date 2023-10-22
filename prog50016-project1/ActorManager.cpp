@@ -1,7 +1,6 @@
 #include "ActorManager.h"
 #include "GameTime.h"
 #include <iostream>
-#include "json.h"
 #include <fstream>
 
 ActorManager::~ActorManager() {
@@ -10,7 +9,7 @@ ActorManager::~ActorManager() {
 
 void ActorManager::Initialize() {
 	player = new Player();
-	enemyFactory = new EnemyFactory();
+	actorFactory = new ActorFactory();
 	isReset = false;
 	Load();
 }
@@ -52,8 +51,8 @@ void ActorManager::Destroy() {
 	lasers.clear();
 	delete player;
 	player = nullptr;
-	delete enemyFactory;
-	enemyFactory = nullptr;
+	delete actorFactory;
+	actorFactory = nullptr;
 }
 
 void ActorManager::CalculateCollisions() {
@@ -91,24 +90,176 @@ void ActorManager::SpawnEnemy(float deltaTime) {
 
 	if (enemyACounter > enemyASpawnRate) {
 		enemyACounter = 0;
-		AddActor(enemyFactory->GetEnemyA());
+		AddActor(actorFactory->GetEnemyA());
 	}
 	if (enemyBCounter > enemyBSpawnRate) {
 		enemyBCounter = 0;
-		AddActor(enemyFactory->GetEnemyB());
+		AddActor(actorFactory->GetEnemyB());
 	}
 	if (asteroidCounter > asteroidSpawnRate) {
 		asteroidCounter = 0;
-		AddActor(enemyFactory->GetAsteroid());
+		AddActor(actorFactory->GetAsteroid());
 	}
 	if (asteroidBigCounter > asteroidBigSpawnRate) {
 		asteroidBigCounter = 0;
-		AddActor(enemyFactory->GetAsteroidBig());
+		AddActor(actorFactory->GetAsteroidBig());
 	}
 }
 
-void ActorManager::Save() {
+void ActorManager::SaveState(json::JSON& document) {
 
+	document["asteroid"] = json::JSON::Make(json::JSON::Class::Array);
+	document["asteroidBig"] = json::JSON::Make(json::JSON::Class::Array);
+	document["enemyA"] = json::JSON::Make(json::JSON::Class::Array);
+	document["enemyB"] = json::JSON::Make(json::JSON::Class::Array);
+	document["enemyLaserA"] = json::JSON::Make(json::JSON::Class::Array);
+	document["enemyLaserB"] = json::JSON::Make(json::JSON::Class::Array);
+	document["laser"] = json::JSON::Make(json::JSON::Class::Array);
+	document["player"] = json::JSON::Make(json::JSON::Class::Null);
+
+	for (auto& actor : actors) {
+		json::JSON actorOBJ = json::JSON::Make(json::JSON::Class::Null);
+		actorOBJ["lives"] = actor->GetLives();
+		actorOBJ["x"] = actor->GetPosition()[0];
+		actorOBJ["y"] = actor->GetPosition()[1];
+		actorOBJ["moveX"] = actor->GetMove()[0];
+		actorOBJ["moveY"] = actor->GetMove()[1];
+		if (actor->GetName() == "enemyLaserB") {
+			actorOBJ["angle"] = ((EnemyLaserB*)actor)->GetAngle();
+		}
+		document[actor->GetName()].append(actorOBJ);
+	}
+
+	for (auto& laser : lasers) {
+		json::JSON laserOBJ = json::JSON::Make(json::JSON::Class::Null);
+		laserOBJ["x"] = laser->GetPosition()[0];
+		laserOBJ["y"] = laser->GetPosition()[1];
+		laserOBJ["moveX"] = laser->GetMove()[0];
+		laserOBJ["moveY"] = laser->GetMove()[1];
+		document[laser->GetName()].append(laserOBJ);
+	}
+	document[player->GetName()]["lives"] = player->GetLives();
+	document[player->GetName()]["x"] = player->GetPosition()[0];
+	document[player->GetName()]["y"] = player->GetPosition()[1];
+}
+
+void ActorManager::LoadState(json::JSON& document) {
+	Destroy();
+	Initialize();
+	
+	if (document.hasKey("asteroid")) {
+		for (auto& obj : document["asteroid"].ArrayRange()) {
+			Asteroid* a = actorFactory->GetAsteroid();
+			a->SetLives(obj["lives"].ToInt());
+			a->SetPosition(
+				obj["x"].ToFloat(),
+				obj["y"].ToFloat()
+			);
+			a->SetMove(
+				obj["moveX"].ToFloat(),
+				obj["moveY"].ToFloat()
+			);
+			AddActor(a);
+		}
+	}
+	if (document.hasKey("asteroidBig")) {
+		for (auto& obj : document["asteroidBig"].ArrayRange()) {
+			AsteroidBig* a = actorFactory->GetAsteroidBig();
+			a->SetLives(obj["lives"].ToInt());
+			a->SetPosition(
+				obj["x"].ToFloat(),
+				obj["y"].ToFloat()
+			);
+			a->SetMove(
+				obj["moveX"].ToFloat(),
+				obj["moveY"].ToFloat()
+			);
+			AddActor(a);
+		}
+	}
+	if (document.hasKey("enemyA")) {
+		for (auto& obj : document["enemyA"].ArrayRange()) {
+			EnemyA* a = actorFactory->GetEnemyA();
+			a->SetLives(obj["lives"].ToInt());
+			a->SetPosition(
+				obj["x"].ToFloat(),
+				obj["y"].ToFloat()
+			);
+			a->SetMove(
+				obj["moveX"].ToFloat(),
+				obj["moveY"].ToFloat()
+			);
+			AddActor(a);
+		}
+	}
+	if (document.hasKey("enemyB")) {
+		for (auto& obj : document["enemyB"].ArrayRange()) {
+			EnemyB* a = actorFactory->GetEnemyB();
+			a->SetLives(obj["lives"].ToInt());
+			a->SetPosition(
+				obj["x"].ToFloat(),
+				obj["y"].ToFloat()
+			);
+			a->SetMove(
+				obj["moveX"].ToFloat(),
+				obj["moveY"].ToFloat()
+			);
+			AddActor(a);
+		}
+	}
+	if (document.hasKey("enemyLaserA")) {
+		for (auto& obj : document["enemyLaserA"].ArrayRange()) {
+			EnemyLaserA* a = actorFactory->GetEnemyLaserA();
+			a->SetLives(obj["lives"].ToInt());
+			a->SetPosition(
+				obj["x"].ToFloat(),
+				obj["y"].ToFloat()
+			);
+			a->SetMove(
+				obj["moveX"].ToFloat(),
+				obj["moveY"].ToFloat()
+			);
+			AddActor(a);
+		}
+	}
+	if (document.hasKey("enemyLaserB")) {
+		for (auto& obj : document["enemyLaserB"].ArrayRange()) {
+			EnemyLaserB* a = actorFactory->GetEnemyLaserB();
+			a->SetLives(obj["lives"].ToInt());
+			a->SetPosition(
+				obj["x"].ToFloat(),
+				obj["y"].ToFloat()
+			);
+			a->SetMove(
+				obj["moveX"].ToFloat(),
+				obj["moveY"].ToFloat()
+			);
+			a->SetAngle(obj["angle"].ToFloat());
+			AddActor(a);
+		}
+	}
+	if (document.hasKey("laser")) {
+		for (auto& obj : document["laser"].ArrayRange()) {
+			Laser* a = actorFactory->GetLaser();
+			a->SetLives(obj["lives"].ToInt());
+			a->SetPosition(
+				obj["x"].ToFloat(),
+				obj["y"].ToFloat()
+			);
+			a->SetMove(
+				obj["moveX"].ToFloat(),
+				obj["moveY"].ToFloat()
+			);
+			AddLaser(a);
+		}
+	}
+	if (document.hasKey("player")) {
+		player->SetLives(document["player"]["lives"].ToInt());
+		player->SetPosition(
+			document["player"]["x"].ToFloat(),
+			document["player"]["y"].ToFloat()
+		);
+	}
 }
 
 void ActorManager::Load() {

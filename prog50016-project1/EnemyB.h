@@ -7,6 +7,11 @@
 #include "Ship.h"
 
 class EnemyB : public Ship {
+
+	float movementCounter = 3.0f;
+	float movementInterval = 5.0f;
+	float targetPos[2] = { 0, 0 };
+
 private:
 	void HandleMovement(float deltaTime);
 	void HandleFire(float deltaTime);

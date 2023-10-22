@@ -4,12 +4,13 @@
 #define _ACTOR_MANAGER_H_
 
 #include "Player.h"
-#include "EnemyFactory.h"
+#include "ActorFactory.h"
 #include "Enemy.h"
 #include "Asteroid.h"
 #include "AsteroidBig.h"
 #include "Laser.h"
 #include <list>
+#include "json.h"
 
 class ActorManager {
 private:
@@ -21,7 +22,7 @@ private:
 	bool isReset = false;
 
 	Player* player = nullptr;
-	EnemyFactory* enemyFactory = nullptr;
+	ActorFactory* actorFactory = nullptr;
 
 	float asteroidCounter = 0.0f;
 	float asteroidBigCounter = 0.0f;
@@ -54,7 +55,9 @@ public:
 
 	void RemoveActor(Actor* actor);
 
-	void Save();
+	void SaveState(json::JSON& document);
+
+	void LoadState(json::JSON& document);
 
 	void Load();
 

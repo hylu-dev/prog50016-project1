@@ -5,6 +5,7 @@
 Laser::Laser() {
 	hit = { ALLY };
 	hurt = { ENEMY, ENVIRONMENT };
+	name = "laser";
 }
 
 void Laser::SetPosition(float x, float y) {

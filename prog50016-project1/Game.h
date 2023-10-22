@@ -36,9 +36,13 @@ public:
 
 	void Play();
 
-	void Load();
+	void Initialize();
 
 	void Reset();
+
+	void LoadState();
+
+	void SaveState();
 
 private:
 	static Game* instance;
@@ -51,7 +55,7 @@ private:
 	UIDisplay* uiDisplay = nullptr;
 
 private:
-	Game();
+	Game() = default;
 	~Game();
 	inline explicit Game(Game const&) = delete;
 	inline Game& operator=(Game const&) = delete;

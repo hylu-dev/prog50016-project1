@@ -1,16 +1,10 @@
 #include "Game.h"
 #include <iostream>
 #include "GameTime.h"
+#include "json.h"
+#include <fstream>
 
 Game* Game::instance = nullptr;
-
-Game::Game() {
-	inputHandler = new InputHandler();
-	renderHandler = new RenderHandler();
-	textureManager = new TextureManager(renderHandler);
-	actorManager = new ActorManager();
-	uiDisplay = new UIDisplay();
-}
 
 Game::~Game() {
 	delete inputHandler;
@@ -38,11 +32,46 @@ void Game::Play() {
 	}
 }
 
-void Game::Load() {
+void Game::Initialize() {
+	inputHandler = new InputHandler();
+	renderHandler = new RenderHandler();
+	textureManager = new TextureManager(renderHandler);
+	actorManager = new ActorManager();
+	uiDisplay = new UIDisplay();
 	actorManager->Initialize();
 }
 
 void Game::Reset() {
 	uiDisplay->ResetScore();
 	actorManager->MarkReset();
+}
+
+void Game::LoadState() {
+	std::ifstream inputStream("Data/SaveState.json");
+	std::string str((std::istreambuf_iterator<char>(inputStream)), std::istreambuf_iterator<char>());
+	json::JSON document = json::JSON::Load(str);
+
+	actorManager->LoadState(document);
+	uiDisplay->SetScore(document["score"].ToInt());
+	uiDisplay->SetHighScore(document["score"].ToInt());
+}
+
+void Game::SaveState() {
+	std::cout << "Save State" << std::endl;
+	json::JSON document = json::JSON::Make(json::JSON::Class::Null);
+
+	document["score"] = uiDisplay->GetScore();
+	document["highScore"] = uiDisplay->GetHighScore();
+	actorManager->SaveState(document);
+
+	std::string jsonStr = document.dump();
+	std::ofstream outputFile("Data/SaveState.json");
+	if (outputFile.is_open()) {
+		outputFile << jsonStr;
+		outputFile.close();
+		std::cout << "JSON data saved" << std::endl;
+	}
+	else {
+		std::cerr << "Unable to open the file for writing." << std::endl;
+	}
 }

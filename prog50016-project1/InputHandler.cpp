@@ -1,4 +1,5 @@
 #include "InputHandler.h"
+#include "Game.h"
 
 InputHandler::InputHandler() {
 	inputMap = {
@@ -30,6 +31,14 @@ void InputHandler::Update(bool* quit) {
 			case SDL_KEYDOWN:
 				if (event.key.keysym.sym == SDLK_ESCAPE) {
 					*quit = true;
+					break;
+				}
+				if (event.key.keysym.sym == SDLK_BACKQUOTE) {
+					Game::Get().SaveState();
+					break;
+				}
+				if (event.key.keysym.sym == SDLK_l) {
+					Game::Get().LoadState();
 					break;
 				}
 				if (event.key.keysym.sym == SDLK_w) {

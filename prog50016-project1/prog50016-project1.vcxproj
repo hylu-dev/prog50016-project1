@@ -187,7 +187,7 @@
     <ClCompile Include="EnemyA.cpp" />
     <ClCompile Include="EnemyB.cpp" />
     <ClCompile Include="Asteroid.cpp" />
-    <ClCompile Include="EnemyFactory.cpp" />
+    <ClCompile Include="ActorFactory.cpp" />
     <ClCompile Include="EnemyLaserA.cpp" />
     <ClCompile Include="EnemyLaserB.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -209,7 +209,7 @@
     <ClInclude Include="EnemyA.h" />
     <ClInclude Include="EnemyB.h" />
     <ClInclude Include="Asteroid.h" />
-    <ClInclude Include="EnemyFactory.h" />
+    <ClInclude Include="ActorFactory.h" />
     <ClInclude Include="EnemyLaserA.h" />
     <ClInclude Include="EnemyLaserB.h" />
     <ClInclude Include="Game.h" />

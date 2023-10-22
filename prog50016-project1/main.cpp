@@ -2,7 +2,7 @@
 #include <iostream>
 
 int main(int argv, char* argc[]) {
-	Game::Get().Load();
+	Game::Get().Initialize();
 	Game::Get().Play();
 	Game::Get().Destroy();
 

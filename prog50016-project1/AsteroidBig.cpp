@@ -9,6 +9,7 @@ AsteroidBig::AsteroidBig() {
 	hurt = { ALLY  };
 	move[0] = 0;
 	move[1] = 1;
+	name = "asteroidBig";
 }
 
 void AsteroidBig::Initialize() {

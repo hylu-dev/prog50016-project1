@@ -15,9 +15,17 @@ public:
 
 	void Update();
 
+	int GetScore() { return score; }
+
+	int GetHighScore() { return highScore; }
+
 	void SetLives(int val) { lives = val; }
 
 	void ResetScore() { score = 0; }
+
+	void SetScore(int val) { score = val; }
+
+	void SetHighScore(int val) { highScore = val; }
 
 	void IncrementScore(int val = 1);
 

@@ -18,6 +18,7 @@ enum Layer
 // A base class for things that move and collide
 class Actor {
 protected:
+	std::string name = "";
 	float pos[2] = { 0 };
 	float move[2] = { 0 };
 	int lives = 1;
@@ -33,7 +34,19 @@ public:
 
 	~Actor();
 
+	std::string GetName() { return name; }
+
+	int GetLives() { return lives; }
+
+	virtual void SetLives(int val) { lives = val; }
+
 	float* GetPosition() { return pos; }
+
+	void SetPosition(float x, float y) { pos[0] = x;pos[1] = y; }
+
+	float* GetMove() { return move; }
+
+	void SetMove(float x, float y) { move[0] = x;move[1] = y; }
 
 	virtual void Update(float deltaTime) = 0;
 
