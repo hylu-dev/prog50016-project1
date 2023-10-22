@@ -36,7 +36,7 @@ public:
 
 	void DrawTex(SDL_Texture* texture, SDL_Rect* renderRect);
 
-	SDL_Point DrawTex(SDL_Texture* texture, int x, int y);
+	SDL_Point DrawTex(SDL_Texture* texture, int x, int y, bool centered = true);
 
 	SDL_Point DrawFontText(std::string message, int x, int y);
 

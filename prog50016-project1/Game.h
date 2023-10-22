@@ -38,6 +38,8 @@ public:
 
 	void Load();
 
+	void Reset();
+
 private:
 	static Game* instance;
 

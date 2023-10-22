@@ -39,5 +39,9 @@ void Game::Play() {
 }
 
 void Game::Load() {
-	actorManager->Load();
+	actorManager->Initialize();
+}
+
+void Game::Reset() {
+	actorManager->MarkReset();
 }

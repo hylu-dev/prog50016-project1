@@ -33,6 +33,8 @@ public:
 
 	~Actor();
 
+	float* GetPosition() { return pos; }
+
 	virtual void Update(float deltaTime) = 0;
 
 	virtual void Collide(Actor* actor);

@@ -13,7 +13,7 @@ public:
 	Asteroid();
 	~Asteroid() = default;
 
-	void SetRandomSpawnPosition();
+	void Randomize();
 
 	void Update(float deltaTime) override;
 

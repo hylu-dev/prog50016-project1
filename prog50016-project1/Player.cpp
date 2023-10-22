@@ -14,7 +14,7 @@ void Player::Draw() {
 	if (invincible) {
 		Game::Get().GetRenderHandler()->SetColor(255, 150, 255);
 	}
-	Game::Get().GetRenderHandler()->DrawTex(texture, pos[0], pos[1]);
+	Game::Get().GetRenderHandler()->DrawTex(texture, (int)pos[0], (int)pos[1]);
 }
 
 void Player::Collide(Actor* actor) {
@@ -71,7 +71,7 @@ void Player::HandleMovement(float deltaTime) {
 
 void Player::HandleFire() {
 	if (Game::Get().GetInputHandler()->GetKeyState(FIRE)) {
-		if (GameTime::Get().FrameCount() % 1000 == 0) {
+		if (GameTime::Get().FrameCount() % 100 == 0) {
 			Laser* laser = new Laser();
 			laser->Load();
 			laser->SetPosition(pos[0], pos[1]);
@@ -91,20 +91,21 @@ void Player::HandleIFrames(float deltaTime) {
 	if (invincible) {
 		iFrames += deltaTime;
 	}
-	if (iFrames > 2) {
+	if (iFrames > 1) {
 		invincible = false;
 		iFrames = 0;
 	}
 }
 
 void Player::TakeDamage(int damage) {
-	if (lives <= 0) {
-		std::cout << "Dead" << std::endl;
-	}
-	else if (!invincible) {
+	if (!invincible) {
 		lives -= damage;
 		invincible = true;
 		Game::Get().GetUIDisplay()->SetLives(lives);
+	}
+	if (lives <= 0) {
+		std::cout << "Dead" << std::endl;
+		Game::Get().Reset();
 	}
 }
 

@@ -2,18 +2,15 @@
 #include "GameTime.h"
 #include <iostream>
 
-ActorManager::ActorManager() {
-	player = new Player();
-	enemyFactory = new EnemyFactory();
+ActorManager::~ActorManager() {
+	Destroy();
 }
 
-ActorManager::~ActorManager() {
-	for (auto& actor : actors) { 
-		delete actor; 
-	}
-	actors.clear();
-	lasers.clear();
-	delete player;
+void ActorManager::Initialize() {
+	player = new Player();
+	enemyFactory = new EnemyFactory();
+	isReset = false;
+	Load();
 }
 
 void ActorManager::Update() {
@@ -36,6 +33,25 @@ void ActorManager::Update() {
 		delete laser;
 	}
 	laserDeletionStack.clear();
+	if (isReset) {
+		Destroy();
+		Initialize();
+	}
+}
+
+void ActorManager::Destroy() {
+	for (auto& actor : actors) {
+		delete actor;
+	}
+	actors.clear();
+	for (auto& laser : lasers) {
+		delete laser;
+	}
+	lasers.clear();
+	delete player;
+	player = nullptr;
+	delete enemyFactory;
+	enemyFactory = nullptr;
 }
 
 void ActorManager::CalculateCollisions() {
@@ -69,10 +85,10 @@ void ActorManager::SpawnEnemy() {
 	if (GameTime::Get().FrameCount() % 1000 == 0) {
 		AddActor(enemyFactory->GetEnemyA());
 	}
-	if (GameTime::Get().FrameCount() % 2000 == 0) {
+	if (GameTime::Get().FrameCount() % 200 == 0) {
 		AddActor(enemyFactory->GetAsteroid());
 	}
-	if (GameTime::Get().FrameCount() % 4000 == 0) {
+	if (GameTime::Get().FrameCount() % 1000 == 0) {
 		AddActor(enemyFactory->GetAsteroidBig());
 	}
 }

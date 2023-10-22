@@ -9,7 +9,7 @@ EnemyA::EnemyA() {
 	hurt = { ALLY };
 }
 
-void EnemyA::SetRandomSpawnPosition() {
+void EnemyA::Randomize() {
 
 	pos[0] = GameTime::Get().Rand()*Game::Get().GetRenderHandler()->GetWidth();
 }

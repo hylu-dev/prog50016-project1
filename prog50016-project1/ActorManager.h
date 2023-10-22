@@ -18,20 +18,24 @@ private:
 	std::list<Laser*> laserDeletionStack;
 	std::list<Laser*> lasers;
 
+	bool isReset = false;
+
 	Player* player = nullptr;
 	EnemyFactory* enemyFactory = nullptr;
 
 private:
 	void CalculateCollisions();
-
 	void SpawnEnemy();
+	void Destroy();
 
 public:
-	ActorManager();
+	ActorManager() = default;
 
 	~ActorManager();
 
 	void Update();
+
+	Player* GetPlayer() { return player; }
 
 	void AddLaser(Laser* laser);
 
@@ -44,6 +48,10 @@ public:
 	void Save();
 
 	void Load();
+
+	void Initialize();
+
+	void MarkReset() { isReset = true; };
 };
 
 #endif

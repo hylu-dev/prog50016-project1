@@ -13,7 +13,7 @@ public:
 	EnemyA();
 	~EnemyA() = default;
 
-	void SetRandomSpawnPosition();
+	void Randomize();
 
 	void Update(float deltaTime) override;
 

@@ -3,7 +3,7 @@
 EnemyA* EnemyFactory::GetEnemyA() {
 	EnemyA* enemy = new EnemyA();
 	enemy->Load();
-	enemy->SetRandomSpawnPosition();
+	enemy->Randomize();
 	return enemy;
 }
 
@@ -15,13 +15,13 @@ EnemyB* EnemyFactory::GetEnemyB() {
 Asteroid* EnemyFactory::GetAsteroid() {
 	Asteroid* asteroid = new Asteroid();
 	asteroid->Load();
-	asteroid->SetRandomSpawnPosition();
+	asteroid->Randomize();
 	return asteroid;
 }
 
 AsteroidBig* EnemyFactory::GetAsteroidBig() {
 	AsteroidBig* asteroid = new AsteroidBig();
 	asteroid->Load();
-	asteroid->SetRandomSpawnPosition();
+	asteroid->Randomize();
 	return asteroid;
 }

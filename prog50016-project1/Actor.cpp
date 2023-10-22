@@ -40,7 +40,7 @@ void Actor::TakeDamage(int damage) {
 }
 
 void Actor::Draw() {
-	Game::Get().GetRenderHandler()->DrawTex(texture, pos[0], pos[1]);
+	Game::Get().GetRenderHandler()->DrawTex(texture, (int)pos[0], (int)pos[1]);
 }
 
 void Actor::Load(std::string path) {

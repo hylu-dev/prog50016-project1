@@ -9,9 +9,12 @@ void UIDisplay::Update() {
 		size = Game::Get().GetRenderHandler()->DrawTex(
 			Game::Get().GetTextureManager()->RetrieveTexture("Hud/life.png"),
 			i*size.x + 10*i + 10,
-			10
+			10,
+			false
 		);
 	}
+
+	size.y = 30;
 
 	size = Game::Get().GetRenderHandler()->DrawFontText(
 		"Score: " + std::to_string(score),
