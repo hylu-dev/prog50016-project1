@@ -2,7 +2,7 @@
     "x": 640,
     "y": 600,
     "lives": 3,
-    "damage": 1,
-    "speed": 30,
+    "damage": 5,
+    "speed": 20,
     "sprite": "Mainplayer/player.png"
 }

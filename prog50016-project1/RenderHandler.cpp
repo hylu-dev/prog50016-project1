@@ -32,21 +32,15 @@ void RenderHandler::DrawBackground() {
 	SDL_RenderCopy(renderer, Game::Get().GetTextureManager()->RetrieveTexture("Background/starBackground.png"), NULL, NULL);
 }
 
-void RenderHandler::DrawTex(SDL_Texture* texture, SDL_Rect* renderRect) {
-	SDL_SetTextureColorMod(texture, colorFilter[0], colorFilter[1], colorFilter[2]);
-	SDL_RenderCopy(renderer, texture, NULL, renderRect);
-	ResetColor();
-}
-
-SDL_Point RenderHandler::DrawTex(SDL_Texture* texture, int x, int y, bool centered) {
+SDL_Point RenderHandler::DrawTex(SDL_Texture* texture, int x, int y, bool centered, float xScale, float yScale, float angle) {
 	SDL_SetTextureColorMod(texture, colorFilter[0], colorFilter[1], colorFilter[2]);
 	SDL_Point size;
 	SDL_QueryTexture(texture, NULL, NULL, &size.x, &size.y);
-	SDL_Rect rect = { (int)(x - size.x * .5f),  (int)(y - size.y * .5f), size.x, size.y };
+	SDL_Rect rect = { (int)(x - size.x * .5f),  (int)(y - size.y * .5f), size.x*xScale, size.y*yScale };
 	if (!centered) {
 		rect = { x, y, size.x, size.y };
 	}
-	SDL_RenderCopy(renderer, texture, NULL, &rect);
+	SDL_RenderCopyEx(renderer, texture, NULL, &rect, angle, NULL, SDL_FLIP_NONE);
 	ResetColor();
 	return size;
 }

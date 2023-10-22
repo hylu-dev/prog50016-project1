@@ -14,7 +14,7 @@ void Player::Draw() {
 	if (invincible) {
 		Game::Get().GetRenderHandler()->SetColor(255, 150, 255);
 	}
-	Game::Get().GetRenderHandler()->DrawTex(texture, (int)pos[0], (int)pos[1]);
+	Game::Get().GetRenderHandler()->DrawTex(texture, (int)pos[0], (int)pos[1], true, 1/(abs(movement[0])*.2+1), 1, 0.0f);
 }
 
 void Player::Collide(Actor* actor) {

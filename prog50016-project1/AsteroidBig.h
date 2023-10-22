@@ -13,7 +13,7 @@ public:
 	AsteroidBig();
 	~AsteroidBig() = default;
 
-	void Randomize();
+	void Initialize();
 
 	void Update(float deltaTime) override;
 

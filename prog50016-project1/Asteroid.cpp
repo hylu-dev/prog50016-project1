@@ -9,7 +9,7 @@ Asteroid::Asteroid() {
 	hurt = { ALLY };
 }
 
-void Asteroid::Randomize() {
+void Asteroid::Initialize() {
 	pos[0] = GameTime::Get().Rand()*Game::Get().GetRenderHandler()->GetWidth();
 
 	move[0] = GameTime::Get().Rand() * 2 - 1;
@@ -21,7 +21,7 @@ void Asteroid::Update(float deltaTime) {
 	pos[1] += move[1] * speed * deltaTime;
 	Draw();
 
-	if (pos[1] > Game::Get().GetRenderHandler()->GetHeight()) {
+	if (pos[1] > Game::Get().GetRenderHandler()->GetHeight() + 50) {
 		Game::Get().GetActorManager()->RemoveActor(this);
 	}
 }

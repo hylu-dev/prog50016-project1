@@ -85,6 +85,9 @@ void ActorManager::SpawnEnemy() {
 	if (GameTime::Get().FrameCount() % 1000 == 0) {
 		AddActor(enemyFactory->GetEnemyA());
 	}
+	if (GameTime::Get().FrameCount() % 2000 == 0) {
+		AddActor(enemyFactory->GetEnemyB());
+	}
 	if (GameTime::Get().FrameCount() % 200 == 0) {
 		AddActor(enemyFactory->GetAsteroid());
 	}

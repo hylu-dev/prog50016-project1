@@ -3,8 +3,9 @@
 #define _PLAYER_H_
 
 #include "Actor.h"
+#include "Ship.h"
 
-class Player : public Actor {
+class Player : public Actor, public Ship {
 
 private:
 	float direction[2] = { 0.0f };

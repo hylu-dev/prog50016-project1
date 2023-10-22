@@ -181,6 +181,12 @@
     <ClCompile Include="UIDisplay.cpp">
       <Filter>Source Files\Systems</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyLaserA.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyLaserB.cpp">
+      <Filter>Source Files\Actors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Actor.h">
@@ -231,6 +237,15 @@
     <ClInclude Include="ActorManager.h">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyLaserA.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyLaserB.h">
+      <Filter>Header Files\Actors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\Asteroid.json">
@@ -249,6 +264,15 @@
       <Filter>Resource Files\Data</Filter>
     </None>
     <None Include="Data\Laser.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="Data\EnemyShipB.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="Data\EnemyLaserA.json">
+      <Filter>Resource Files\Data</Filter>
+    </None>
+    <None Include="Data\EnemyLaserB.json">
       <Filter>Resource Files\Data</Filter>
     </None>
   </ItemGroup>

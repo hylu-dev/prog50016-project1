@@ -1,5 +1,5 @@
 {
-    "lives": 1,
+    "lives": 5,
     "damage": 1,
     "speed": 100,
     "sprite": "Asteroids/meteorBig.png"
