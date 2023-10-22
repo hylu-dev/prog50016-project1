@@ -14,7 +14,7 @@ void Laser::SetPosition(float x, float y) {
 
 void Laser::TakeDamage(int damage) {
 	lives -= damage;
-	if (lives <= 0) {
+	if (lives == 0) {
 		Game::Get().GetActorManager()->RemoveLaser(this);
 	}
 }
