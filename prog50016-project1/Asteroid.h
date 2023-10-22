@@ -13,6 +13,8 @@ public:
 	Asteroid();
 	~Asteroid() = default;
 
+	void TakeDamage(int damage);
+
 	void Initialize();
 
 	void Update(float deltaTime) override;

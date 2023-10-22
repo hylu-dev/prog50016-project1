@@ -17,6 +17,8 @@ public:
 	EnemyB();
 	~EnemyB() = default;
 
+	void TakeDamage(int damage) override;
+
 	void Initialize();
 
 	void Update(float deltaTime) override;

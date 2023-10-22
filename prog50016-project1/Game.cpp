@@ -43,5 +43,6 @@ void Game::Load() {
 }
 
 void Game::Reset() {
+	uiDisplay->ResetScore();
 	actorManager->MarkReset();
 }

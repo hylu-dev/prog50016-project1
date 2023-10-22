@@ -17,10 +17,9 @@ public:
 
 	void SetLives(int val) { lives = val; }
 
-	void SetScore(int val) { score = val; }
-	void IncrementScore() { score++; }
+	void ResetScore() { score = 0; }
 
-	void SetHighScore(int val) { highScore = val; }
+	void IncrementScore(int val = 1);
 
 	void Load();
 };

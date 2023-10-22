@@ -30,3 +30,8 @@ void UIDisplay::Update() {
 void UIDisplay::Load() {
 
 }
+
+void UIDisplay::IncrementScore(int val) {
+	score += val;
+	highScore = std::max(score, highScore);
+}

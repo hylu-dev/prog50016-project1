@@ -15,6 +15,13 @@ void EnemyB::HandleMovement(float deltaTime) {
 	pos[1] += move[1] * speed * deltaTime;
 }
 
+void EnemyB::TakeDamage(int damage) {
+	lives -= damage;
+	if (lives <= 0) {
+		Game::Get().GetUIDisplay()->IncrementScore();
+		Game::Get().GetActorManager()->RemoveActor(this);
+	}
+}
 void EnemyB::HandleFire() {
 	if (GameTime::Get().FrameCount() % 500 == 0) {
 		EnemyLaserB* laser = new EnemyLaserB();

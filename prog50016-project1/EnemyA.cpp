@@ -10,6 +10,14 @@ EnemyA::EnemyA() {
 	hurt = { ALLY };
 }
 
+void EnemyA::TakeDamage(int damage) {
+	lives -= damage;
+	if (lives <= 0) {
+		Game::Get().GetUIDisplay()->IncrementScore();
+		Game::Get().GetActorManager()->RemoveActor(this);
+	}
+}
+
 void EnemyA::HandleMovement(float deltaTime) {
 	pos[0] += move[0] * speed * deltaTime;
 	pos[1] += move[1] * speed * deltaTime;

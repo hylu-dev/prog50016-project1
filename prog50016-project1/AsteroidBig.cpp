@@ -31,3 +31,11 @@ void AsteroidBig::Update(float deltaTime) {
 void AsteroidBig::Load() {
 	Actor::Load("Data/AsteroidBig.json");
 }
+
+void AsteroidBig::TakeDamage(int damage) {
+	lives -= damage;
+	if (lives <= 0) {
+		Game::Get().GetUIDisplay()->IncrementScore();
+		Game::Get().GetActorManager()->RemoveActor(this);
+	}
+}
