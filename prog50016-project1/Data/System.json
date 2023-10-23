@@ -1,6 +1,5 @@
 {
-  "Window": {
-    "Width": 1280,
-    "Height": 720
-  }
+  "width": 1280,
+  "height": 720,
+  "fullscreen": false
 }

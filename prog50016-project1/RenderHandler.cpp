@@ -1,7 +1,10 @@
 #include "RenderHandler.h"
 #include "Game.h"
+#include "json.h"
+#include <fstream>
 
-RenderHandler::RenderHandler() {
+void RenderHandler::Initialize() {
+	Load();
 	window = SDL_CreateWindow("Ship Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, fullscreen);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	TTF_Init();
@@ -64,4 +67,20 @@ SDL_Point RenderHandler::DrawFontText(std::string message, int x, int y) {
 
 void RenderHandler::Render() {
 	SDL_RenderPresent(renderer);
+}
+
+void RenderHandler::Load() {
+	std::ifstream inputStream("Data/System.json");
+	std::string str((std::istreambuf_iterator<char>(inputStream)), std::istreambuf_iterator<char>());
+	json::JSON document = json::JSON::Load(str);
+
+	if (document.hasKey("width")) {
+		width = document["width"].ToInt();
+	}
+	if (document.hasKey("height")) {
+		height = document["height"].ToInt();
+	}
+	if (document.hasKey("fullscreen")) {
+		fullscreen = document["fullscreen"].ToBool();
+	}
 }

@@ -19,10 +19,12 @@ private:
 	int colorFilter[3] = { 255, 255, 255 };
 
 public:
-	RenderHandler();
+	RenderHandler() = default;
 	~RenderHandler();
 
 	SDL_Renderer* GetRenderer() { return renderer; }
+
+	void Initialize();
 
 	int GetWidth() { return width;  }
 
@@ -39,6 +41,8 @@ public:
 	SDL_Point DrawFontText(std::string message, int x, int y);
 
 	void Render();
+
+	void Load();
 };
 
 #endif

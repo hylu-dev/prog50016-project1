@@ -35,9 +35,10 @@ void Game::Play() {
 void Game::Initialize() {
 	inputHandler = new InputHandler();
 	renderHandler = new RenderHandler();
+	renderHandler->Initialize();
 	textureManager = new TextureManager(renderHandler);
-	actorManager = new ActorManager();
 	uiDisplay = new UIDisplay();
+	actorManager = new ActorManager();
 	actorManager->Initialize();
 }
 
