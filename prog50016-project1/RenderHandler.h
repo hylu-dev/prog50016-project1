@@ -12,6 +12,7 @@ class RenderHandler
 private:
 	SDL_Window* window = nullptr;
 	SDL_Renderer* renderer = nullptr;
+	std::string name = "";
 	int width = 1280;
 	int height = 720;
 	bool fullscreen = false;

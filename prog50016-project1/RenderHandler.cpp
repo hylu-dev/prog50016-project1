@@ -5,7 +5,7 @@
 
 void RenderHandler::Initialize() {
 	Load();
-	window = SDL_CreateWindow("Ship Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, fullscreen);
+	window = SDL_CreateWindow(name.c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, fullscreen);
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	TTF_Init();
 	font = TTF_OpenFont("Hud/SpaceMono-Regular.ttf", 24);
@@ -74,6 +74,9 @@ void RenderHandler::Load() {
 	std::string str((std::istreambuf_iterator<char>(inputStream)), std::istreambuf_iterator<char>());
 	json::JSON document = json::JSON::Load(str);
 
+	if (document.hasKey("name")) {
+		name = document["name"].ToString();
+	}
 	if (document.hasKey("width")) {
 		width = document["width"].ToInt();
 	}
