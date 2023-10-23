@@ -1,6 +1,7 @@
 {
-    "lives": 5,
-    "damage": 1,
-    "speed": 100,
-    "sprite": "Asteroids/meteorBig.png"
+  "lives": 5,
+  "damage": 1,
+  "speed": 100,
+  "value": 3,
+  "sprite": "Asteroids/meteorBig.png"
 }

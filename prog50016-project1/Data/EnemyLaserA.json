@@ -1,6 +1,6 @@
 {
     "lives": 1,
     "damage": 1,
-    "speed": 400,
+    "speed": 300,
     "sprite": "Enemies/laserRed.png"
 }

@@ -232,6 +232,7 @@
     <None Include="Data\EnemyShipB.json" />
     <None Include="Data\Laser.json" />
     <None Include="Data\Player.json" />
+    <None Include="Data\SaveState.json" />
     <None Include="Data\SpawnRates.json" />
     <None Include="Data\System.json" />
   </ItemGroup>

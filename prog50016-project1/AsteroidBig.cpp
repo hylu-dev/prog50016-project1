@@ -34,9 +34,11 @@ void AsteroidBig::Load() {
 }
 
 void AsteroidBig::TakeDamage(int damage) {
-	lives -= damage;
-	if (lives <= 0) {
-		Game::Get().GetUIDisplay()->IncrementScore();
-		Game::Get().GetActorManager()->RemoveActor(this);
+	if (lives > 0) {
+		lives -= damage;
+		if (lives <= 0) {
+			Game::Get().GetUIDisplay()->IncrementScore(value);
+			Game::Get().GetActorManager()->RemoveActor(this);
+		}
 	}
 }

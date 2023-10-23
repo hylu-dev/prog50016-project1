@@ -26,6 +26,9 @@ void Ship::Load(std::string path) {
 	if (document.hasKey("fireRate")) {
 		fireRate = document["fireRate"].ToFloat();
 	}
+	if (document.hasKey("value")) {
+		value = document["value"].ToInt();
+	}
 	if (document.hasKey("sprite")) {
 		texture = Game::Get().GetTextureManager()->RetrieveTexture(document["sprite"].ToString());
 	}

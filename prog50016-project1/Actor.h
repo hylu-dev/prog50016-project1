@@ -21,6 +21,7 @@ protected:
 	std::string name = "";
 	float pos[2] = { 0 };
 	float move[2] = { 0 };
+	int value = 1;
 	int lives = 1;
 	int damage = 1;
 	float radius = 1;

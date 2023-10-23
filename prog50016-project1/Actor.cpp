@@ -63,6 +63,9 @@ void Actor::Load(std::string path) {
 	if (document.hasKey("speed")) {
 		speed = document["speed"].ToInt();
 	}
+	if (document.hasKey("value")) {
+		value = document["value"].ToInt();
+	}
 	if (document.hasKey("sprite")) {
 		texture = Game::Get().GetTextureManager()->RetrieveTexture(document["sprite"].ToString());
 	}

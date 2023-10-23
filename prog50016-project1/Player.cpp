@@ -20,7 +20,8 @@ void Player::Draw() {
 	if (invincible) {
 		Game::Get().GetRenderHandler()->SetColor(255, 150, 255);
 	}
-	Game::Get().GetRenderHandler()->DrawTex(texture, (int)pos[0], (int)pos[1], true, 1/(abs(move[0])*.2f+1), 1, 0.0f);
+	// Thin out rendering while moving on left axes to simulate ship roll
+	Game::Get().GetRenderHandler()->DrawTex(texture, (int)pos[0], (int)pos[1], true, 1/(abs(move[0])*.3f+1), 1, 0.0f);
 }
 
 void Player::Collide(Actor* actor) {
@@ -112,7 +113,6 @@ void Player::TakeDamage(int damage) {
 		Game::Get().GetUIDisplay()->SetLives(lives);
 	}
 	if (lives <= 0) {
-		std::cout << "Dead" << std::endl;
 		Game::Get().Reset();
 	}
 }

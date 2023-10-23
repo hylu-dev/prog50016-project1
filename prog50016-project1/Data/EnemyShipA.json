@@ -1,7 +1,8 @@
 {
-    "lives": 2,
-    "damage": 1,
-    "speed": 100,
-    "fireRate": 2.0,
-    "sprite": "Enemies/enemyShip.png"
+  "lives": 2,
+  "damage": 1,
+  "speed": 100,
+  "fireRate": 2.0,
+  "value": 2,
+  "sprite": "Enemies/enemyShip.png"
 }

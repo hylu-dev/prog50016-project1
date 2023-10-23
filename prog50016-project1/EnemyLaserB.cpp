@@ -25,13 +25,16 @@ void EnemyLaserB::Initialize(float x, float y) {
 }
 
 void EnemyLaserB::Draw() {
-	Game::Get().GetRenderHandler()->DrawTex(texture, (int)pos[0], (int)pos[1], true, 1, 1, angle);
+	Game::Get().GetRenderHandler()->SetColor(200, 255, 100);
+	Game::Get().GetRenderHandler()->DrawTex(texture, (int)pos[0], (int)pos[1], true, 2, 2, angle);
 }
 
 void EnemyLaserB::TakeDamage(int damage) {
-	lives -= damage;
-	if (lives <= 0) {
-		Game::Get().GetActorManager()->RemoveActor(this);
+	if (lives > 0) {
+		lives -= damage;
+		if (lives <= 0) {
+			Game::Get().GetActorManager()->RemoveActor(this);
+		}
 	}
 }
 

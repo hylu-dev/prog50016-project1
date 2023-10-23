@@ -1,7 +1,8 @@
 {
-    "lives": 4,
-    "damage": 1,
-    "speed": 100,
-    "fireRate": 2.0,
-    "sprite": "Enemies/enemyUFO.png"
+  "lives": 4,
+  "damage": 1,
+  "speed": 100,
+  "fireRate": 2.0,
+  "value": 5,
+  "sprite": "Enemies/enemyUFO.png"
 }

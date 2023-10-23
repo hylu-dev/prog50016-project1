@@ -16,9 +16,11 @@ void EnemyLaserA::Initialize(float x, float y) {
 }
 
 void EnemyLaserA::TakeDamage(int damage) {
-	lives -= damage;
-	if (lives <= 0) {
-		Game::Get().GetActorManager()->RemoveActor(this);
+	if (lives > 0) {
+		lives -= damage;
+		if (lives <= 0) {
+			Game::Get().GetActorManager()->RemoveActor(this);
+		}
 	}
 }
 
